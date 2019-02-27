@@ -1,6 +1,14 @@
-<nav>
-  <li><a [routerLink]="['/admin']">Admin Home</a></li>
-  <li><a [routerLink]="['jobs']">Jobs</a></li>
-  <li><a [routerLink]="['candidates']">Candidates</a></li>
-</nav>
-<router-outlet></router-outlet>
+<div class="container row">
+  <div class="col-xs-2">
+    <nav>
+      <li><a [routerLink]="['/admin']">Admin Home</a></li>
+      <li><a [routerLink]="['jobs']">Jobs</a></li>
+      <li><a [routerLink]="['candidates']">Candidates</a></li>
+    </nav>
+  </div>
+  <div class="col-xs-10">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
