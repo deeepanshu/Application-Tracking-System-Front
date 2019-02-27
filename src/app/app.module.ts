@@ -14,6 +14,10 @@ import { ListSkillsJobsComponent } from './admin/jobs-admin/list-skills-jobs/lis
 import { HttpClientModule } from '@angular/common/http';
 import { JobCardsComponent } from './admin/jobs-admin/job-cards/job-cards.component';
 import { LongDateTimeToDatePipe } from './pipes/long-date-time-to-date.pipe';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { CandidateComponent } from './candidate/candidate.component';
+import { InterviewerComponent } from './interviewer/interviewer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { LongDateTimeToDatePipe } from './pipes/long-date-time-to-date.pipe';
     ListCandidatesAdminComponent,
     ListSkillsJobsComponent,
     JobCardsComponent,
-    LongDateTimeToDatePipe
+    LongDateTimeToDatePipe,
+    LoginComponent,
+    SignupComponent,
+    CandidateComponent,
+    InterviewerComponent
   ],
   imports: [
     BrowserModule,
