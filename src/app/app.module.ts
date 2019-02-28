@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ApproutingModule } from './approuting/approuting.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import { AuthInterceptor } from './services/auth.interceptor';
 
 import { AppComponent } from './app.component';
 import { AdminComponent } from './admin/admin.component';
@@ -11,7 +12,7 @@ import { ListJobsAdminComponent } from './admin/jobs-admin/list-jobs-admin/list-
 import { CandidatesAdminComponent } from './admin/candidates-admin/candidates-admin.component';
 import { ListCandidatesAdminComponent } from './admin/candidates-admin/list-candidates-admin/list-candidates-admin.component';
 import { ListSkillsJobsComponent } from './admin/jobs-admin/list-skills-jobs/list-skills-jobs.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JobCardsComponent } from './admin/jobs-admin/job-cards/job-cards.component';
 import { LongDateTimeToDatePipe } from './pipes/long-date-time-to-date.pipe';
 import { LoginComponent } from './login/login.component';
@@ -42,7 +43,9 @@ import { InterviewerComponent } from './interviewer/interviewer.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

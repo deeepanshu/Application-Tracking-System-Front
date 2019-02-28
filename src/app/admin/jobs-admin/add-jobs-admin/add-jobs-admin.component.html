@@ -99,8 +99,26 @@
             <button class="custom-button" type="button" (click)="resetSkill($event)">Reset</button>
             <div *ngIf="skillsRequired">
               <table>
+                <thead>
+                  <th>
+                    Skill
+                  </th>
+                  <th>
+                    Proficiency
+                  </th>
+                </thead>
                 <tbody>
-                    <app-list-skills-jobs *ngFor="let skill of skillsRequired" [skill]="skill" ></app-list-skills-jobs>
+                    <tr *ngFor="let skill of skillsRequired">
+                      <td>
+                        {{skill.skill}}
+                      </td>
+                      <td>
+                        {{skill.proficiency}}
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                      </td>
+                    </tr>
                 </tbody>
               </table>
             </div>

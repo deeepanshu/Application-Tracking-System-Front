@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { JobsService } from 'src/app/services/jobs.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-list-jobs-admin',
@@ -7,18 +6,9 @@ import { JobsService } from 'src/app/services/jobs.service';
   styleUrls: ['./list-jobs-admin.component.css']
 })
 export class ListJobsAdminComponent implements OnInit {
+  @Input() jobs: any;
 
-  jobs: any;
+  constructor() {}
 
-  constructor(
-    private jobService: JobsService
-  ) { }
-
-  ngOnInit() {
-    this.jobService.getAllJobs().then((response)=> {
-      this.jobs = response;
-      console.log(this.jobs);
-    })
-  }
-
+  ngOnInit() {}
 }

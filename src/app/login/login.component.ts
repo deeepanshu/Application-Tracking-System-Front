@@ -15,8 +15,8 @@ const helper = new JwtHelperService();
 })
 export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
+    email: new FormControl('d@gmail.com'),
+    password: new FormControl('qwerasdf')
   });
 
   login() {

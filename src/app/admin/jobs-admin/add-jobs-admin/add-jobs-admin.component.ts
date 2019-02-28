@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { JobsService } from 'src/app/services/jobs.service';
 
@@ -8,6 +8,9 @@ import { JobsService } from 'src/app/services/jobs.service';
   styleUrls: ['./add-jobs-admin.component.css']
 })
 export class AddJobsAdminComponent implements OnInit {
+
+  @Output() public getJobs = new EventEmitter<void>();
+
 
   buttonTitle = 'Add New Job';
   toggle= false;
@@ -55,8 +58,10 @@ export class AddJobsAdminComponent implements OnInit {
 
 
   addSkill(event) {
+
     const skill = this.addNewJobForm.get('skillName').value;
     const proficiency = this.addNewJobForm.get('skillProficiency').value;
+    console.log(skill, proficiency);
     if (skill && proficiency) {
       this.skillsRequired.push({skill, proficiency});
       this.addNewJobForm.get('skillName').reset();
@@ -88,6 +93,7 @@ export class AddJobsAdminComponent implements OnInit {
     };
     this.jobService.addJobs(formValue).then((response)=>{
       console.log(response);
+      this.getJobs.emit();
     })
     console.log(formValue);
   }
