@@ -15,11 +15,16 @@ export class JobsAdminComponent implements OnInit {
   ) { }
 
 
-  getAllJobs(){
-    this.jobService.getAllJobs().then((response) => {
+  /*
+  this.jobService.getAllJobs().then((response) => {
       this.jobs = response;
       console.log(this.jobs);
     });
+  */
+  getAllJobs(){
+    this.jobService.getAllJobs().subscribe(data => {
+      this.jobs = data;
+    })
   }
 
   ngOnInit() {

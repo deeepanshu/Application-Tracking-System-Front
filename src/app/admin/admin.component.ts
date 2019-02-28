@@ -20,8 +20,10 @@ export class AdminComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isUserAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       this.isUserAuthenticated = isAuthenticated;
+      console.log(isAuthenticated);
     });
   }
 

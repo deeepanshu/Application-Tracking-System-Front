@@ -91,9 +91,8 @@ export class AddJobsAdminComponent implements OnInit {
       experience: this.addNewJobForm.get('experience').value,
       numberOfVacancies: this.addNewJobForm.get('numberOfVacancies').value
     };
-    this.jobService.addJobs(formValue).then((response)=>{
+    this.jobService.addJob(formValue).subscribe(response => {
       console.log(response);
-      this.getJobs.emit();
     })
     console.log(formValue);
   }

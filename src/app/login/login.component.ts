@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.get('email').value,
       password: this.loginForm.get('password').value
     };
-    this.authService.login(loginData).then((response: Login) => {
+    this.authService.login(loginData).subscribe((response: Login) => {
       if (response.success) {
         const decoded = helper.decodeToken(response.token);
         if (decoded) {

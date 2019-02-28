@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
       password: this.signUpForm.get('password').value
     }
     console.log(user);
-    this.authService.signUp(user).then((data: SignUp) => {
+    this.authService.signUp(user).subscribe((data: SignUp) => {
       console.log(data);
       if (data.success) {
         this.router.navigate(['/login']);

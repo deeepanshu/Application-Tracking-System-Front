@@ -19,6 +19,12 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { CandidateComponent } from './candidate/candidate.component';
 import { InterviewerComponent } from './interviewer/interviewer.component';
+import { InterviewersAdminComponent } from './admin/interviewers-admin/interviewers-admin.component';
+import { AddInterviewersAdminComponent } from './admin/interviewers-admin/add-interviewers-admin/add-interviewers-admin.component';
+import { ListInterviewersAdminComponent } from './admin/interviewers-admin/list-interviewers-admin/list-interviewers-admin.component';
+import { DepartmentsAdminComponent } from './admin/departments-admin/departments-admin.component';
+import { AddDepartmentAdminComponent } from './admin/departments-admin/add-department-admin/add-department-admin.component';
+import { ListDepartmentAdminComponent } from './admin/departments-admin/list-department-admin/list-department-admin.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +41,13 @@ import { InterviewerComponent } from './interviewer/interviewer.component';
     LoginComponent,
     SignupComponent,
     CandidateComponent,
-    InterviewerComponent
+    InterviewerComponent,
+    InterviewersAdminComponent,
+    AddInterviewersAdminComponent,
+    ListInterviewersAdminComponent,
+    DepartmentsAdminComponent,
+    AddDepartmentAdminComponent,
+    ListDepartmentAdminComponent
   ],
   imports: [
     BrowserModule,
