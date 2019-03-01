@@ -17,10 +17,10 @@ import { ListSkillsJobsComponent } from './admin/jobs-admin/list-skills-jobs/lis
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JobCardsComponent } from './admin/jobs-admin/job-cards/job-cards.component';
 import { LongDateTimeToDatePipe } from './pipes/long-date-time-to-date.pipe';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { CandidateComponent } from './candidate/candidate.component';
-import { InterviewerComponent } from './interviewer/interviewer.component';
+import { LoginComponent } from './user/login/login.component';
+import { SignupComponent } from './user/signup/signup.component';
+import { CandidateComponent } from './user/candidate/candidate.component';
+import { InterviewerComponent } from './user/interviewer/interviewer.component';
 import { InterviewersAdminComponent } from './admin/interviewers-admin/interviewers-admin.component';
 import { AddInterviewersAdminComponent } from './admin/interviewers-admin/add-interviewers-admin/add-interviewers-admin.component';
 import { ListInterviewersAdminComponent } from './admin/interviewers-admin/list-interviewers-admin/list-interviewers-admin.component';

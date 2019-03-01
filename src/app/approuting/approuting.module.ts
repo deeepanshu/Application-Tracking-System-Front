@@ -4,10 +4,10 @@ import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AdminComponent } from '../admin/admin.component';
 import { JobsAdminComponent } from '../admin/jobs-admin/jobs-admin.component';
 import { CandidatesAdminComponent } from '../admin/candidates-admin/candidates-admin.component';
-import { SignupComponent } from '../signup/signup.component';
-import { LoginComponent } from '../login/login.component';
-import { CandidateComponent } from '../candidate/candidate.component';
-import { InterviewerComponent } from '../interviewer/interviewer.component';
+import { SignupComponent } from '../user/signup/signup.component';
+import { LoginComponent } from '../user/login/login.component';
+import { CandidateComponent } from '../user/candidate/candidate.component';
+import { InterviewerComponent } from '../user/interviewer/interviewer.component';
 import { RoleGuardService as RoleGuard} from './../services/role-guard.service';
 import { DepartmentsAdminComponent } from '../admin/departments-admin/departments-admin.component';
 import { InterviewersAdminComponent } from '../admin/interviewers-admin/interviewers-admin.component';
@@ -40,7 +40,7 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
   {path: 'candidate', component: CandidateComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_CANDIDATE'}},
-  {path: 'interviewer', component: InterviewerComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_INTERVIEWERS'}},
+  {path: 'interviewer', component: InterviewerComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_INTERVIEWER'}},
   // { path: '**', redirectTo: '' }
 ];
 

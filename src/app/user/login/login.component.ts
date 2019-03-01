@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
-import getLoginRoles from '../types/loginRoles.interface';
-import getRouteFromRole from '../types/roleRoute.interface';
+import getLoginRoles from '../../types/loginRoles.interface';
+import getRouteFromRole from '../../types/roleRoute.interface';
 import { Subscription } from 'rxjs';
 
 const helper = new JwtHelperService();
@@ -16,10 +16,11 @@ const helper = new JwtHelperService();
 })
 export class LoginComponent implements OnInit {
   private authListenerSubs: Subscription;
+  //kGkUh1ACa1
   isUserAuthenticated = false;
   loginForm = new FormGroup({
-    email: new FormControl('d@gmail.com'),
-    password: new FormControl('qwerasdf')
+    email: new FormControl('d@gmail.com', [Validators.required, Validators.email]),
+    password: new FormControl('qwerasdf', [Validators.required])
   });
 
   login() {
@@ -46,12 +47,16 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+
+  }
 
   ngOnInit() {
-    this.isUserAuthenticated = this.authService.getIsAuth();
+    // this.isUserAuthenticated = this.authService.getIsAuth();
+    // console.log('isUserAuthenticated', this.isUserAuthenticated);
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       this.isUserAuthenticated = isAuthenticated;
+      // console.log('isAuthenticated', isAuthenticated);
     });
   }
 
