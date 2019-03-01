@@ -9,16 +9,39 @@ import { LoginComponent } from '../login/login.component';
 import { CandidateComponent } from '../candidate/candidate.component';
 import { InterviewerComponent } from '../interviewer/interviewer.component';
 import { RoleGuardService as RoleGuard} from './../services/role-guard.service';
+import { DepartmentsAdminComponent } from '../admin/departments-admin/departments-admin.component';
+import { InterviewersAdminComponent } from '../admin/interviewers-admin/interviewers-admin.component';
+import { AddJobsAdminComponent } from '../admin/jobs-admin/add-jobs-admin/add-jobs-admin.component';
+import { ListJobsAdminComponent } from '../admin/jobs-admin/list-jobs-admin/list-jobs-admin.component';
+import { AddDepartmentAdminComponent } from '../admin/departments-admin/add-department-admin/add-department-admin.component';
+import { ListDepartmentAdminComponent } from '../admin/departments-admin/list-department-admin/list-department-admin.component';
+import { ListCandidatesAdminComponent } from '../admin/candidates-admin/list-candidates-admin/list-candidates-admin.component';
+import { AddInterviewersAdminComponent } from '../admin/interviewers-admin/add-interviewers-admin/add-interviewers-admin.component';
+import { ListInterviewersAdminComponent } from '../admin/interviewers-admin/list-interviewers-admin/list-interviewers-admin.component';
+
 const routes: Routes = [
   {path: 'admin', component: AdminComponent,  canActivate: [RoleGuard], data: {expectedRole: 'ROLE_ADMIN'}, children: [
-    {path: 'jobs', component: JobsAdminComponent},
-    {path: 'candidates', component: CandidatesAdminComponent}
+    {path: 'jobs', component: JobsAdminComponent, children: [
+      {path: 'add', component: AddJobsAdminComponent},
+      {path: 'list', component: ListJobsAdminComponent}
+    ]},
+    {path: 'candidates', component: CandidatesAdminComponent, children: [
+      {path: 'list', component: ListCandidatesAdminComponent}
+    ]},
+    {path: 'departments', component: DepartmentsAdminComponent, children: [
+      {path: 'add', component: AddDepartmentAdminComponent},
+      {path: 'list', component: ListDepartmentAdminComponent}
+    ]},
+    {path: 'interviewers', component: InterviewersAdminComponent, children: [
+      {path: 'add', component: AddInterviewersAdminComponent},
+      {path: 'list', component: ListInterviewersAdminComponent}
+    ]}
   ]},
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
   {path: 'candidate', component: CandidateComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_CANDIDATE'}},
   {path: 'interviewer', component: InterviewerComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_INTERVIEWERS'}},
-  { path: '**', redirectTo: '' }
+  // { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

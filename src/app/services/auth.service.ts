@@ -89,7 +89,6 @@ export class AuthService {
   }
 
   private saveAuthData(token: string, expiryDate: Date) {
-    console.log(token, expiryDate);
     localStorage.setItem('token', token);
     localStorage.setItem('expiration', expiryDate.toISOString());
   }

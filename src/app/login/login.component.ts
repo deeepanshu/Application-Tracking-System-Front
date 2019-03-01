@@ -5,6 +5,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import getLoginRoles from '../types/loginRoles.interface';
 import getRouteFromRole from '../types/roleRoute.interface';
+import { Subscription } from 'rxjs';
 
 const helper = new JwtHelperService();
 
@@ -14,6 +15,8 @@ const helper = new JwtHelperService();
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  private authListenerSubs: Subscription;
+  isUserAuthenticated = false;
   loginForm = new FormGroup({
     email: new FormControl('d@gmail.com'),
     password: new FormControl('qwerasdf')
@@ -45,5 +48,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isUserAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
+      this.isUserAuthenticated = isAuthenticated;
+    });
+  }
+
 }

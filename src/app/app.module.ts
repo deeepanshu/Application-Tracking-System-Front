@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { ApproutingModule } from './approuting/approuting.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { AdminComponent } from './admin/admin.component';
@@ -53,7 +55,9 @@ import { ListDepartmentAdminComponent } from './admin/departments-admin/list-dep
     BrowserModule,
     ApproutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
