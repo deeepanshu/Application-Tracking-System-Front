@@ -1,32 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class AdminComponent implements OnInit {
+export class HeaderComponent implements OnInit {
 
   private authListenerSubs: Subscription;
+  //kGkUh1ACa1
   isUserAuthenticated = false;
-  jobs: any;
+  constructor(private authService: AuthService, private router: Router) { }
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) { }
+  logout(){
+    this.authService.logout();
+  }
 
   ngOnInit() {
     this.isUserAuthenticated = this.authService.getIsAuth();
+    console.log(this.isUserAuthenticated);
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       this.isUserAuthenticated = isAuthenticated;
+      console.log(this.isUserAuthenticated);
     });
   }
 
-  logout() {
-    this.authService.logout();
-  }
 }

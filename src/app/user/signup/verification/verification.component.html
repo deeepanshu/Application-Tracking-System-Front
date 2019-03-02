@@ -1,6 +1,6 @@
 <div *ngIf="!loading else stillLoading">
   <div *ngIf="success else notVerified">
-    {{this.step}}
+    <header>asfafjklj</header>
     <div [ngSwitch]="step">
       <app-mobile-verification *ngSwitchCase="2" (increment)="increment($event)" (decrement)="decrement($event)"></app-mobile-verification>
       <app-address *ngSwitchCase="3" (increment)="increment($event)" (decrement)="decrement($event)"></app-address>
@@ -8,6 +8,7 @@
       <app-employment *ngSwitchCase="5" (increment)="increment($event)" (decrement)="decrement($event)"></app-employment>
       <app-uploads *ngSwitchCase="6" (increment)="increment($event)" (decrement)="decrement($event)"></app-uploads>
       <app-references *ngSwitchCase="7" (increment)="increment($event)" (decrement)="decrement($event)"></app-references>
+      <app-finalize *ngSwitchCase="8"></app-finalize>
     </div>
   </div>
 </div>

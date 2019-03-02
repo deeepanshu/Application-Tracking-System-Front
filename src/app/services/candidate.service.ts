@@ -44,4 +44,8 @@ export class CandidateService {
     return this.http.post(`/api/candidate/add/address`, address);
   }
 
+  finalizeCandidateProfile(): Observable<{success:boolean}> {
+    return this.http.get<{success:boolean}>(`/api/candidate/finalize`);
+  }
+
 }

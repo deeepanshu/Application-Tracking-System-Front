@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,8 @@ export class AuthService {
   private isAuthenitcated = false;
   private tokenTimer: any;
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {}
 
   setToken(token) {
@@ -77,6 +79,7 @@ export class AuthService {
   logout() {
     this.clearAuthData();
     this.authStatusListener.next(false);
+    this.router.navigate(['login']);
   }
 
   validateEmail(identifier: String): Observable<{success:string, message: string, token:string, expiresIn: number, status: number, isMobileVerified: boolean}> {

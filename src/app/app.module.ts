@@ -37,6 +37,9 @@ import { EducationComponent } from './user/signup/education/education.component'
 import { EmploymentComponent } from './user/signup/employment/employment.component';
 import { UploadsComponent } from './user/signup/uploads/uploads.component';
 import { AddressComponent } from './user/signup/address/address.component';
+import { FinalizeComponent } from './user/signup/finalize/finalize.component';
+import { JobDetailsComponent } from './user/job-details/job-details.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +72,10 @@ import { AddressComponent } from './user/signup/address/address.component';
     EducationComponent,
     EmploymentComponent,
     UploadsComponent,
-    AddressComponent
+    AddressComponent,
+    FinalizeComponent,
+    JobDetailsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

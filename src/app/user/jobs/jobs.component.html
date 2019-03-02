@@ -1,43 +1,57 @@
-<div *ngIf="jobs.length > 0 else spinner">
-  <h3>Jobs for you:</h3>
-  <div style="width: 60%">
-    <div class="" *ngFor="let job of jobs" style="border: 1px solid black;">
-      <p class="title">{{job.profile}}</p>
-      <p>{{job.location}}</p>
-      <hr />
-
-      <div class="" style="display: flex; flex-direction: row;">
-        <div class="weirdFlex">
-          <p>Start Date</p>
-          <p>{{job.startDate | date}}</p>
-        </div>
-        <div class="weirdFlex">
-          <p>Last Date</p>
-          <p>{{job.targetDate | date}}</p>
-        </div>
-        <div class="weirdFlex">
-          <p>Package</p>
-          <p>{{job.package}}</p>
-        </div>
-        <div class="weirdFlex">
-          <p>Posted On</p>
-          <p>{{job.createdAt | date}}</p>
-        </div>
-        <div class="weirdFlex">
-            <p>Experience</p>
-            <p>{{job.experience}} years</p>
-          </div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card">
+       Filters Coming Soon
       </div>
-      <p>{{job.isHotJob | booleanToMessage}}</p>
-      <hr class="divider" />
-      <p style="text-align: left;">
-        {{job.jobType}}
-        <span style="float:right;"><a href="#" class="custom-button linkAsButton">Apply</a></span>
-      </p>
+    </div>
+    <div class="col-sm-9">
+      <div *ngIf="jobs.length > 0 else spinner">
+        <div>
+          <div class="card" *ngFor="let job of jobs">
+
+            <p class="title">{{job.profile}}</p>
+            <p>{{job.location}}</p>
+            <hr   class="divider"/>
+            <div class="row">
+              <div class="col-sm-1 col-xs-1"></div>
+              <div class="col-sm-2 col-xs-2">
+                <p><b>Start Date</b></p>
+                <p>{{job.startDate | date}}</p>
+              </div>
+              <div class="col-sm-2 col-xs-2">
+                <p><b>Last Date</b></p>
+                <p>{{job.targetDate | date}}</p>
+              </div>
+              <div class="col-sm-2 col-xs-2">
+                <p><b>Package</b></p>
+                <p>{{job.package}}</p>
+              </div>
+              <div class="col-sm-2 col-xs-2">
+                <p><b>Posted On</b></p>
+                <p>{{job.createdAt | date}}</p>
+              </div>
+              <div class="col-sm-2 col-xs-2">
+                <p><b>Experience</b></p>
+                <p>{{job.experience}} years</p>
+              </div>
+            </div>
+            <hr class="divider" />
+            <div style="padding: 5px; padding-bottom: 15px;">
+                <p style="text-align: left;">
+                    <span style="margin: auto;">{{job.jobType}}</span>
+                    <span style="float:right;"><button class="custom-button">View Details</button></span>
+                  </p>
+            </div>
+            
+          </div>
+        </div>
+
+
+      </div>
+
     </div>
   </div>
-
-
 </div>
 <ng-template #spinner>
   <app-spinner></app-spinner>

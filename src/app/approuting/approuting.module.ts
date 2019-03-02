@@ -48,8 +48,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'candidate', component: CandidateComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_CANDIDATE'}},
   {path: 'interviewer', component: InterviewerComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_INTERVIEWER'}},
-  {path: 'jobs', component: JobsComponent, children:[]}
-  // { path: '**', redirectTo: '' }
+  {path: 'jobs', component: JobsComponent, children:[]},
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
