@@ -8,14 +8,19 @@ import { SignupComponent } from '../signup/signup.component';
 import { LoginComponent } from '../login/login.component';
 import { CandidateComponent } from '../candidate/candidate.component';
 import { InterviewerComponent } from '../interviewer/interviewer.component';
+import { DepartmentsAdminComponent } from '../admin/departments-admin/departments-admin.component';
 import { RoleGuardService as RoleGuard} from './../services/role-guard.service';
+import {AuthGuardService as AuthGuard} from './../services/auth-guard.service';
+import { InterviewersAdminComponent } from '../admin/interviewers-admin/interviewers-admin.component';
 const routes: Routes = [
   {path: 'admin', component: AdminComponent,  canActivate: [RoleGuard], data: {expectedRole: 'ROLE_ADMIN'}, children: [
     {path: 'jobs', component: JobsAdminComponent},
-    {path: 'candidates', component: CandidatesAdminComponent}
+    {path: 'candidates', component: CandidatesAdminComponent},
+    {path: 'departments', component: DepartmentsAdminComponent},
+    {path: 'interviewers', component: InterviewersAdminComponent},
   ]},
   {path: 'signup', component: SignupComponent},
-  {path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
   {path: 'candidate', component: CandidateComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_CANDIDATE'}},
   {path: 'interviewer', component: InterviewerComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_INTERVIEWERS'}},
   { path: '**', redirectTo: '' }
