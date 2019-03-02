@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { JobsService } from 'src/app/services/jobs.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -6,14 +6,17 @@ import { JwtHelperService} from '@auth0/angular-jwt';
 import { ToastrService } from 'ngx-toastr';
 import getLoginRoles from 'src/app/types/loginRoles.interface';
 import { CandidateService } from 'src/app/services/candidate.service';
+import { Subscription } from 'rxjs';
 const helper = new JwtHelperService();
 @Component({
   selector: 'app-job-details',
   templateUrl: './job-details.component.html',
   styleUrls: ['./job-details.component.css']
 })
-export class JobDetailsComponent implements OnInit {
+export class JobDetailsComponent implements OnInit, OnDestroy {
 
+  private authListenerSubs: Subscription;
+  isUserAuthenticated = false;
   jobId: string = '';
   job: Job;
   constructor(
@@ -27,8 +30,7 @@ export class JobDetailsComponent implements OnInit {
 
   apply(event) {
     console.log(this.jobId);
-    
-    if(this.authService.getIsAuth()){
+    if(this.isUserAuthenticated){
       let token = this.authService.getToken();
       if(token) {
         let decoded = helper.decodeToken(token);
@@ -48,11 +50,20 @@ export class JobDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.jobId = this.route.snapshot.paramMap.get("jobId");
+    this.isUserAuthenticated = this.authService.getIsAuth();
+    console.log('isUserAuth', this.isUserAuthenticated);
+    this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
+      this.isUserAuthenticated = isAuthenticated;
+      console.log('isUserAuth', this.isUserAuthenticated);
+    });
     if(this.jobId) {
       this.jobService.getJobById(this.jobId).subscribe((response) => {
         this.job = response;
       })
     }
+  }
+  ngOnDestroy() {
+    this.authListenerSubs.unsubscribe();
   }
 
 }
