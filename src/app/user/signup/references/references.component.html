@@ -1,0 +1,73 @@
+<div>
+  <h3>Add References</h3>
+  <form [formGroup]="referenceForm" (ngSubmit)="submitReference()">
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label>Name
+          <input type="text" class="form-control" formControlName="name">
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label>Organistaion Name
+          <input type="text" class="form-control" formControlName="organisationName">
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label>Position
+          <input type="text" class="form-control" formControlName="position">
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label>Email
+          <input type="text" class="form-control" formControlName="email">
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label>Contact
+          <input type="text" class="form-control" formControlName="mobile">
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <button class="custom-button" (click)="addReference($event)" type="button">Add</button>
+      </div>
+      <div class="col-sm-3">
+        <button class="custom-button" type="button">Reset</button>
+      </div>
+    </div>
+    
+  <button class="custom-button" type="button" (click)="goBack($event)">Back</button>
+    <button class="custom-button" type="submit">Submit</button>
+  </form>
+<div *ngIf="references.length>0">
+  <h4>Added References</h4>
+    <table>
+      <thead>
+          <th>Name</th>
+          <th>Organisation Name</th>
+          <th>Position</th>
+          <th>Email</th>
+          <th>Contact</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reference of references">
+          <td>{{reference.name}}</td>
+          <td>{{reference.organisationName}}</td>
+          <td>{{reference.position}}</td>
+          <td>{{reference.email}}</td>
+          <td>{{reference.mobile}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+  
+</div>

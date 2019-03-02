@@ -22,7 +22,7 @@ import { ListCandidatesAdminComponent } from '../admin/candidates-admin/list-can
 import { AddInterviewersAdminComponent } from '../admin/interviewers-admin/add-interviewers-admin/add-interviewers-admin.component';
 import { ListInterviewersAdminComponent } from '../admin/interviewers-admin/list-interviewers-admin/list-interviewers-admin.component';
 import { JobsComponent } from '../user/jobs/jobs.component';
-import { EmailVerificationComponent } from '../user/signup/email-verification/email-verification.component';
+import { VerificationComponent } from '../user/signup/verification/verification.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'jobs', pathMatch: 'full'},
@@ -43,9 +43,8 @@ const routes: Routes = [
       {path: 'list', component: ListInterviewersAdminComponent}
     ]}
   ]},
-  {path: 'signup', component: SignupComponent, children: [
-    {path: 'verify/:token', component: EmailVerificationComponent },
-  ]},
+  {path: 'signup', component: SignupComponent},
+  {path: 'signup/verify/:token', component: VerificationComponent},
   {path: 'login', component: LoginComponent},
   {path: 'candidate', component: CandidateComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_CANDIDATE'}},
   {path: 'interviewer', component: InterviewerComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_INTERVIEWER'}},

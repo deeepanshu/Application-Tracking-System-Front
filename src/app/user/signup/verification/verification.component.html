@@ -1,0 +1,19 @@
+<div *ngIf="!loading else stillLoading">
+  <div *ngIf="success else notVerified">
+    {{this.step}}
+    <div [ngSwitch]="step">
+      <app-mobile-verification *ngSwitchCase="2" (increment)="increment($event)" (decrement)="decrement($event)"></app-mobile-verification>
+      <app-address *ngSwitchCase="3" (increment)="increment($event)" (decrement)="decrement($event)"></app-address>
+      <app-education *ngSwitchCase="4" (increment)="increment($event)" (decrement)="decrement($event)"></app-education>
+      <app-employment *ngSwitchCase="5" (increment)="increment($event)" (decrement)="decrement($event)"></app-employment>
+      <app-uploads *ngSwitchCase="6" (increment)="increment($event)" (decrement)="decrement($event)"></app-uploads>
+      <app-references *ngSwitchCase="7" (increment)="increment($event)" (decrement)="decrement($event)"></app-references>
+    </div>
+  </div>
+</div>
+<ng-template #stillLoading>
+  <app-spinner></app-spinner>
+</ng-template>
+<ng-template #notVerified>
+  <p>Token Not Verified. Please check email again or Sign Up.</p>
+</ng-template>

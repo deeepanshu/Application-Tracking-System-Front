@@ -1,0 +1,39 @@
+<form [formGroup]="addressForm" (ngSubmit)="submitAddress()">
+  <div class="row">
+    <div class="col-sm-6 form-group">
+      <label>House and Flat
+        <input type="text" class="form-control" formControlName="houseAndFlat">
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 form-group">
+      <label>Locality
+        <input type="text" class="form-control" formControlName="locality">
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 form-group">
+      <label>City
+        <input type="text" class="form-control" formControlName="city">
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 form-group" >
+      <label>State
+        <input type="text" class="form-control" formControlName="state">
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 form-group">
+      <label>Country
+        <input type="text" class="form-control" formControlName="country">
+      </label>
+    </div>
+  </div>
+  <button class="custom-button" type="button" (click)="resetForm($event)">Reset</button>
+  <button class="custom-button" type="submit">Submit</button>
+</form>

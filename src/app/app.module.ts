@@ -30,8 +30,13 @@ import { ListDepartmentAdminComponent } from './admin/departments-admin/list-dep
 import { JobsComponent } from './user/jobs/jobs.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { BooleanToMessagePipe } from './boolean-to-message.pipe';
-import { EmailVerificationComponent } from './user/signup/email-verification/email-verification.component';
+import { VerificationComponent } from './user/signup/verification/verification.component';
+import { ReferencesComponent } from './user/signup/references/references.component';
 import { MobileVerificationComponent } from './user/signup/mobile-verification/mobile-verification.component';
+import { EducationComponent } from './user/signup/education/education.component';
+import { EmploymentComponent } from './user/signup/employment/employment.component';
+import { UploadsComponent } from './user/signup/uploads/uploads.component';
+import { AddressComponent } from './user/signup/address/address.component';
 
 @NgModule({
   declarations: [
@@ -58,8 +63,13 @@ import { MobileVerificationComponent } from './user/signup/mobile-verification/m
     JobsComponent,
     SpinnerComponent,
     BooleanToMessagePipe,
-    EmailVerificationComponent,
-    MobileVerificationComponent
+    VerificationComponent,
+    ReferencesComponent,
+    MobileVerificationComponent,
+    EducationComponent,
+    EmploymentComponent,
+    UploadsComponent,
+    AddressComponent
   ],
   imports: [
     BrowserModule,

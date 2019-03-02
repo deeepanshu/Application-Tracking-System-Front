@@ -1,0 +1,57 @@
+<div>
+  <h3>Add Employment</h3>
+  <form [formGroup]="employmentForm" (ngSubmit)="submitEmployments()">
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label>Organistation Name
+          <input type="text" class="form-control" formControlName="companyName">
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label>Profile
+          <input type="text" class="form-control" formControlName="profile">
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label>Time Spent(in years)
+          <input type="text" class="form-control" formControlName="timeSpent">
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3">
+        <button class="custom-button" (click)="addEmployment($event)" type="button">Add</button>
+      </div>
+      <div class="col-sm-3">
+        <button class="custom-button" type="button">Reset</button>
+      </div>
+    </div>
+
+    <button class="custom-button" type="button" (click)="goBack($event)">Back</button>
+    <button class="custom-button" type="submit">Submit</button>
+  </form>
+
+  <div *ngIf="employments.length>0">
+    <h4>Added Employment History</h4>
+    <table>
+      <thead>
+        <th>Company Name</th>
+        <th>Profile</th>
+        <th>Time Spent(years)</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employment of employments">
+          <td>{{employment.companyName}}</td>
+          <td>{{employment.profile}}</td>
+          <td>{{employment.timeSpent}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

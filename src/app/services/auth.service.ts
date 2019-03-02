@@ -15,6 +15,10 @@ export class AuthService {
     private http: HttpClient
   ) {}
 
+  setToken(token) {
+    this.token = token;
+  }
+
   getToken() {
     return this.token;
   }
@@ -75,6 +79,17 @@ export class AuthService {
     this.authStatusListener.next(false);
   }
 
+  validateEmail(identifier: String): Observable<{success:string, message: string, token:string, expiresIn: number, status: number, isMobileVerified: boolean}> {
+    return this.http.get<{success:string, message: string, token:string, expiresIn: number, status: number, isMobileVerified: boolean}>(`api/auth/validate/email/${identifier}`);
+  }
+
+  verifyMobile(mobile: string): Observable<{success:string, message: string}>{
+    return this.http.post<{success:string, message: string}>(`api/auth/verify/mobile/` , {mobile: mobile});
+  }
+
+  validateMobile(identifier: String): Observable<{success:string, message: string}> {
+    return this.http.get<{success:string, message: string}>(`api/auth/validate/mobile/${identifier}`);
+  }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead
