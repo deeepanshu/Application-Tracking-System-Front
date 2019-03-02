@@ -17,6 +17,7 @@ export class RoleGuardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const expectedRole = route.data.expectedRole;
+
     const token = this.authService.getToken();
     if (!token) {
       this.router.navigate(['login']);

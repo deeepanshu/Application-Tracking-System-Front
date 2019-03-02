@@ -27,6 +27,9 @@ import { ListInterviewersAdminComponent } from './admin/interviewers-admin/list-
 import { DepartmentsAdminComponent } from './admin/departments-admin/departments-admin.component';
 import { AddDepartmentAdminComponent } from './admin/departments-admin/add-department-admin/add-department-admin.component';
 import { ListDepartmentAdminComponent } from './admin/departments-admin/list-department-admin/list-department-admin.component';
+import { JobsComponent } from './user/jobs/jobs.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { BooleanToMessagePipe } from './boolean-to-message.pipe';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,10 @@ import { ListDepartmentAdminComponent } from './admin/departments-admin/list-dep
     ListInterviewersAdminComponent,
     DepartmentsAdminComponent,
     AddDepartmentAdminComponent,
-    ListDepartmentAdminComponent
+    ListDepartmentAdminComponent,
+    JobsComponent,
+    SpinnerComponent,
+    BooleanToMessagePipe
   ],
   imports: [
     BrowserModule,

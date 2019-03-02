@@ -33,7 +33,8 @@ export class AddJobsAdminComponent implements OnInit {
     targetDate: new FormControl('', [Validators.required]),
     numberOfVacancies: new FormControl(''),
     skillName: new FormControl(''),
-    skillProficiency: new FormControl('')
+    skillProficiency: new FormControl(''),
+    startDate: new FormControl('', [Validators.required])
   });
 
   constructor(
@@ -85,6 +86,7 @@ export class AddJobsAdminComponent implements OnInit {
       educationalRequirements: this.addNewJobForm.get('educationalRequirements').value,
       skills: this.skillsRequired,
       blockedJobs: [],
+      startDate: this.addNewJobForm.get('startDate').value,
       location: this.addNewJobForm.get('location').value,
       experience: this.addNewJobForm.get('experience').value,
       numberOfVacancies: this.addNewJobForm.get('numberOfVacancies').value

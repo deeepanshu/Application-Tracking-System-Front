@@ -23,7 +23,6 @@ export class AdminComponent implements OnInit {
     this.isUserAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       this.isUserAuthenticated = isAuthenticated;
-      console.log(isAuthenticated);
     });
   }
 

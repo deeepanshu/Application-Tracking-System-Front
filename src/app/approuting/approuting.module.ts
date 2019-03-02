@@ -18,8 +18,10 @@ import { ListDepartmentAdminComponent } from '../admin/departments-admin/list-de
 import { ListCandidatesAdminComponent } from '../admin/candidates-admin/list-candidates-admin/list-candidates-admin.component';
 import { AddInterviewersAdminComponent } from '../admin/interviewers-admin/add-interviewers-admin/add-interviewers-admin.component';
 import { ListInterviewersAdminComponent } from '../admin/interviewers-admin/list-interviewers-admin/list-interviewers-admin.component';
+import { JobsComponent } from '../user/jobs/jobs.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: 'jobs', pathMatch: 'full'},
   {path: 'admin', component: AdminComponent,  canActivate: [RoleGuard], data: {expectedRole: 'ROLE_ADMIN'}, children: [
     {path: 'jobs', component: JobsAdminComponent, children: [
       {path: 'add', component: AddJobsAdminComponent},
@@ -41,6 +43,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'candidate', component: CandidateComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_CANDIDATE'}},
   {path: 'interviewer', component: InterviewerComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_INTERVIEWER'}},
+  {path: 'jobs', component: JobsComponent}
   // { path: '**', redirectTo: '' }
 ];
 
