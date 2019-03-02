@@ -20,6 +20,11 @@ export class JobsService {
       catchError(this.handleError('getAllJobs', []))
     );
   }
+
+  getJobById(id: string): Observable<Job> {
+    return this.http.get<Job>(`/api/job/${id}`);
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead

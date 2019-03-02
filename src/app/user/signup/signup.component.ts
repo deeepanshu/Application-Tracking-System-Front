@@ -37,6 +37,10 @@ export class SignupComponent implements OnInit {
     });
   }
 
+  loginRoute() {
+    this.router.navigate(['login']);
+  }
+
 
   constructor(
     private authService: AuthService,

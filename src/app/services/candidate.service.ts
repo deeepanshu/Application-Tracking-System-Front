@@ -12,6 +12,10 @@ export class CandidateService {
     private http: HttpClient
   ) { }
 
+  apply(){
+    
+  }
+
   getCandidateObjectList(projection: string): Observable<Candidate>{
     return this.http.get<Candidate>(`/api/candidate/list/${projection}`);
   }

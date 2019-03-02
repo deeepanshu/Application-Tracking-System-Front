@@ -1,3 +1,49 @@
-<p>
-  job-details works!
-</p>
+<div class="container">
+  <div *ngIf="job else loading">
+
+    <div class="card">
+      <h3 style="padding-left: 10px">{{job.profile}}<span *ngIf="job.isHotJob">&nbsp;<img width="30px" src="assets/icons8-fire-48.png"/></span></h3>
+      <div class="row">
+        <div class="col-sm-1 col-xs-1"></div>
+        <div class="col-sm-2 col-xs-2">
+          <p><b>Start Date</b></p>
+          <p>{{job.startDate | date}}</p>
+        </div>
+        <div class="col-sm-2 col-xs-2">
+          <p><b>Apply Till</b></p>
+          <p>{{job.targetDate | date}}</p>
+        </div>
+        <div class="col-sm-2 col-xs-2">
+          <p><b>Package</b></p>
+          <p>{{job.package}}</p>
+        </div>
+        <div class="col-sm-2 col-xs-2">
+          <p><b>Posted On</b></p>
+          <p>{{job.createdAt | date}}</p>
+        </div>
+        <div class="col-sm-2 col-xs-2">
+          <p><b>Vacancies</b></p>
+          <p>{{job.numberOfVacancies}}</p>
+        </div>
+      </div>
+     
+    </div>
+    
+    <div class="card">
+      <div class="container descriptionBox">
+        <p><b>Job Type</b>: {{job.jobType}}</p>
+        <p><b>Educational Requirements</b>: {{job.educationalRequirements[0]}}</p>
+        <p><b>Experience Required</b>: {{job.experience}} Years</p>
+        <h4><b>Description</b></h4>
+        <p class="text-justify">{{job.description}}</p>
+        <div style="text-align: center;">
+          <button class="custom-button" (click)="apply($event)" type="button">Apply Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

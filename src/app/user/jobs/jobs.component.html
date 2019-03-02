@@ -1,8 +1,11 @@
 <div class="container">
+  <div class="card">
+    <h4 class="text-center">Found {{noOfJobs}} Jobs For You!</h4>
+  </div>
   <div class="row">
     <div class="col-sm-3">
       <div class="card">
-       Filters Coming Soon
+        Filters Coming Soon
       </div>
     </div>
     <div class="col-sm-9">
@@ -12,7 +15,7 @@
 
             <p class="title">{{job.profile}}</p>
             <p>{{job.location}}</p>
-            <hr   class="divider"/>
+            <hr class="divider" />
             <div class="row">
               <div class="col-sm-1 col-xs-1"></div>
               <div class="col-sm-2 col-xs-2">
@@ -38,18 +41,15 @@
             </div>
             <hr class="divider" />
             <div style="padding: 5px; padding-bottom: 15px;">
-                <p style="text-align: left;">
-                    <span style="margin: auto;">{{job.jobType}}</span>
-                    <span style="float:right;"><button class="custom-button">View Details</button></span>
-                  </p>
+              <p style="text-align: left;">
+                <span style="margin: auto;">{{job.jobType}}</span>
+                <span style="float:right;"><button class="custom-button" type="button" (click)="viewDetails($event,job._id)">View Details &gt;</button></span>
+              </p>
             </div>
-            
+
           </div>
         </div>
-
-
       </div>
-
     </div>
   </div>
 </div>

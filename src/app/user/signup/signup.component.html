@@ -1,27 +1,29 @@
-<div>
-  <form [formGroup]="signUpForm" (ngSubmit)="signup()">
-    <div class="row">
-      <div class="col-sm-6 form-group">
-        <label>Name
-          <input type="text" class="form-control" formControlName="name">
-        </label>
+<div class="container">
+  <div class="card">
+    <form [formGroup]="signUpForm" (ngSubmit)="signup()">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <label>Name
+            <input type="text" class="form-control" formControlName="name" placeholder="Name">
+          </label>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 form-group">
-        <label>Email
-          <input type="text" class="form-control" formControlName="email">
-        </label>
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <label>Email
+            <input type="text" class="form-control" formControlName="email" placeholder="Email">
+          </label>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 form-group">
-        <label>Password
-          <input type="password" class="form-control" formControlName="password">
-        </label>
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <label>Password
+            <input type="password" class="form-control" formControlName="password" placeholder="Password">
+          </label>
+        </div>
       </div>
-    </div>
-    <button class="custom-button" [disabled]='!signUpForm.valid' type="submit">Invite Me!</button>
-  </form>
-  <a class="btn custom-form-button sign-up-anchor" [routerLink]="['/login']" routerLinkActive="router-link-active" >or Login!</a>
+      <button class="custom-button" [disabled]='!signUpForm.valid' type="submit">Invite Me!</button>
+    </form>
+    <button class="secondary-button" (click)=" loginRoute($event)">Login</button>
+  </div>
 </div>
