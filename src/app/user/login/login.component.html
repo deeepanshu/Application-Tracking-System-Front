@@ -1,3 +1,4 @@
+Logged In: {{isUserAuthenticated}}
 <div>
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="row">
@@ -14,6 +15,8 @@
         </label>
       </div>
     </div>
-    <button class="custom-button" type="submit">Submit</button>
+    <button class="custom-button"  [disabled]="!loginForm.valid"  type="submit">Submit</button>
   </form>
+  <a class="btn custom-form-button sign-up-anchor" [routerLink]="['/signup']" routerLinkActive="router-link-active" >Or SignUp!</a>
+
 </div>

@@ -1,16 +1,38 @@
 Logged In: {{this.isUserAuthenticated}}
 <button type="button" class="custom-button" (click)="logout()">Logout</button>
 <div class="container row">
-  <div class="col-xs-2">
+
+  <div class="col-sm-3">
     <nav>
       <li><a [routerLink]="['/admin']">Admin Home</a></li>
-      <li><a [routerLink]="['jobs']">Jobs</a></li>
-      <li><a [routerLink]="['candidates']">Candidates</a></li>
+      <li><a [routerLink]="['jobs']">Jobs</a>
+        <ul>
+          <li><a [routerLink]="['jobs/add']">Add Jobs</a></li>
+          <li><a [routerLink]="['jobs/list']">List Jobs</a></li>
+        </ul>
+      </li>
+      <li><a [routerLink]="['candidates']">Candidates</a>
+        <ul>
+          <li><a [routerLink]="['candidates/add']">Add Candidates</a></li>
+          <li><a [routerLink]="['candidates/list']">List Candidates</a></li>
+        </ul>
+      </li>
+      <li><a [routerLink]="['departments']">Departments</a>
+        <ul>
+          <li><a [routerLink]="['departments/add']">Add Departments</a></li>
+          <li><a [routerLink]="['departments/list']">List Departments</a></li>
+        </ul>
+      </li>
+      <li><a [routerLink]="['interviewers']">Interviewers</a>
+        <ul>
+          <li><a [routerLink]="['interviewers/add']">Add Interviewers</a></li>
+          <li><a [routerLink]="['interviewers/list']">List Interviewers</a></li>
+        </ul>
+      </li>
+
     </nav>
   </div>
-  <div class="col-xs-10">
+  <div class="col-sm-9">
     <router-outlet></router-outlet>
   </div>
 </div>
-
-

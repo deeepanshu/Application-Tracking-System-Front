@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { ApproutingModule } from './approuting/approuting.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { AdminComponent } from './admin/admin.component';
@@ -15,16 +17,21 @@ import { ListSkillsJobsComponent } from './admin/jobs-admin/list-skills-jobs/lis
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JobCardsComponent } from './admin/jobs-admin/job-cards/job-cards.component';
 import { LongDateTimeToDatePipe } from './pipes/long-date-time-to-date.pipe';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { CandidateComponent } from './candidate/candidate.component';
-import { InterviewerComponent } from './interviewer/interviewer.component';
+import { LoginComponent } from './user/login/login.component';
+import { SignupComponent } from './user/signup/signup.component';
+import { CandidateComponent } from './user/candidate/candidate.component';
+import { InterviewerComponent } from './user/interviewer/interviewer.component';
 import { InterviewersAdminComponent } from './admin/interviewers-admin/interviewers-admin.component';
 import { AddInterviewersAdminComponent } from './admin/interviewers-admin/add-interviewers-admin/add-interviewers-admin.component';
 import { ListInterviewersAdminComponent } from './admin/interviewers-admin/list-interviewers-admin/list-interviewers-admin.component';
 import { DepartmentsAdminComponent } from './admin/departments-admin/departments-admin.component';
 import { AddDepartmentAdminComponent } from './admin/departments-admin/add-department-admin/add-department-admin.component';
 import { ListDepartmentAdminComponent } from './admin/departments-admin/list-department-admin/list-department-admin.component';
+import { JobsComponent } from './user/jobs/jobs.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { BooleanToMessagePipe } from './boolean-to-message.pipe';
+import { EmailVerificationComponent } from './user/signup/email-verification/email-verification.component';
+import { MobileVerificationComponent } from './user/signup/mobile-verification/mobile-verification.component';
 
 @NgModule({
   declarations: [
@@ -47,13 +54,20 @@ import { ListDepartmentAdminComponent } from './admin/departments-admin/list-dep
     ListInterviewersAdminComponent,
     DepartmentsAdminComponent,
     AddDepartmentAdminComponent,
-    ListDepartmentAdminComponent
+    ListDepartmentAdminComponent,
+    JobsComponent,
+    SpinnerComponent,
+    BooleanToMessagePipe,
+    EmailVerificationComponent,
+    MobileVerificationComponent
   ],
   imports: [
     BrowserModule,
     ApproutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

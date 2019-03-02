@@ -17,10 +17,11 @@
     <div class="row">
       <div class="col-sm-6 form-group">
         <label>Password
-          <input type="text" class="form-control" formControlName="password">
+          <input type="password" class="form-control" formControlName="password">
         </label>
       </div>
     </div>
-    <button class="custom-button" type="submit">Submit</button>
+    <button class="custom-button" [disabled]='!signUpForm.valid' type="submit">Invite Me!</button>
   </form>
+  <a class="btn custom-form-button sign-up-anchor" [routerLink]="['/login']" routerLinkActive="router-link-active" >or Login!</a>
 </div>

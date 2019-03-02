@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { Subscription } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  selector: 'app-interviewer',
+  templateUrl: './interviewer.component.html',
+  styleUrls: ['./interviewer.component.css']
 })
-export class AdminComponent implements OnInit {
+export class InterviewerComponent implements OnInit {
 
   private authListenerSubs: Subscription;
   isUserAuthenticated = false;
-  jobs: any;
 
   constructor(
     private authService: AuthService,
@@ -23,10 +22,10 @@ export class AdminComponent implements OnInit {
     this.isUserAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       this.isUserAuthenticated = isAuthenticated;
+      console.log(isAuthenticated);
     });
   }
-
-  logout() {
+  logout(){
     this.authService.logout();
     this.router.navigate(['login']);
   }

@@ -1,6 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { JobsService } from 'src/app/services/jobs.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-jobs-admin',
@@ -13,40 +15,37 @@ export class AddJobsAdminComponent implements OnInit {
 
 
   buttonTitle = 'Add New Job';
-  toggle= false;
   profiles = ['Software Dev 1', 'Software Dev 2', 'Web Designer 1', 'Team Lead 1', 'Team Lead 2'];
   jobTypes = ['Full Time', 'Part Time', 'Intern'];
   proficiencyLevels = ['Basic', 'Medium', 'Advanced'];
   skillsRequired = [];
 
   addNewJobForm = new FormGroup({
-    type: new FormControl(''),
-    profile: new FormControl(''),
+    type: new FormControl('', [Validators.required]),
+    profile: new FormControl('', [Validators.required]),
     hotJob: new FormControl(false),
     description: new FormControl(''),
-    educationalRequirements: new FormControl(''),
+    educationalRequirements: new FormControl('', [Validators.required]),
     skillsRequired: new FormControl(''),
-    location: new FormControl(''),
-    experience: new FormControl(''),
+    location: new FormControl('', [Validators.required]),
+    experience: new FormControl('', [Validators.required]),
     package: new FormControl(''),
-    targetDate: new FormControl(''),
+    targetDate: new FormControl('', [Validators.required]),
     numberOfVacancies: new FormControl(''),
     skillName: new FormControl(''),
-    skillProficiency: new FormControl('')
+    skillProficiency: new FormControl(''),
+    startDate: new FormControl('', [Validators.required])
   });
 
   constructor(
-
+    private toastr: ToastrService,
+    private router: Router,
     private jobService: JobsService
   ) { }
 
   ngOnInit() {
   }
 
-  addformtoggle(){
-    this.toggle = !this.toggle;
-    this.buttonTitle = this.toggle ? 'Cancel Adding' : 'Add New Job';
-  }
 
   assignJobType(event) {
     this.addNewJobForm.get('type').setValue(event.target.value);
@@ -87,12 +86,19 @@ export class AddJobsAdminComponent implements OnInit {
       educationalRequirements: this.addNewJobForm.get('educationalRequirements').value,
       skills: this.skillsRequired,
       blockedJobs: [],
+      startDate: this.addNewJobForm.get('startDate').value,
       location: this.addNewJobForm.get('location').value,
       experience: this.addNewJobForm.get('experience').value,
       numberOfVacancies: this.addNewJobForm.get('numberOfVacancies').value
     };
     this.jobService.addJob(formValue).subscribe(response => {
       console.log(response);
+      if(response.status){
+        this.toastr.success('Job Added');
+        this.router.navigate(['admin/jobs/list']);
+      } else {
+        this.toastr.error('Job Not Saved');
+      }
     })
     console.log(formValue);
   }

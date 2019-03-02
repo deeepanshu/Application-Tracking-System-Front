@@ -1,129 +1,139 @@
 <div class="container">
-  <button type="button" class="custom-button" (click)="addformtoggle()">{{buttonTitle}}</button>
+  <form [formGroup]="addNewJobForm" (ngSubmit)="submitForm()">
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label>Job Type
+          <select class="form-control" (change)="assignJobType($event)">
+            <option [value]="" [disabled]="true">Choose</option>
+            <option *ngFor="let jobType of jobTypes" [value]="jobType">{{jobType}}</option>
+          </select>
+        </label>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label>Start Date
+          <input type="date"  class="form-control" formControlName="startDate">
+        </label>
+      </div>
+    </div>
 
-  <div *ngIf="toggle">
-      <form [formGroup]="addNewJobForm" (ngSubmit)="submitForm()">
-          <div class="row">
-            <div class="col-sm-6 form-group">
-              <label>Job Type
-                <select class="form-control" (change)="assignJobType($event)" >
-                  <option [value]="" [disabled]="true">Choose</option>
-                  <option *ngFor="let jobType of jobTypes" [value]="jobType">{{jobType}}</option>
-                </select>
-              </label>
-            </div>
-            <div class="col-sm-6 form-group">
-              <label>
-                <input type="checkbox" formControlName="hotJob">
-                Hot Job?
-              </label>
-            </div>
+    <div class="row">
+        <div class="col-sm-6 form-group">
+            <label>
+              <input type="checkbox" formControlName="hotJob">
+              Hot Job?
+            </label>
           </div>
-          <div class="row">
-            <div class="col-sm-6 form-group">
-              <label for="">Profile
-                <select class="form-control" (change)="assignProfile($event)">
-                    <option [value]="" [disabled]="true">Choose</option>
-                  <option *ngFor="let profile of profiles" [value]="profile">{{profile}}</option>
-                </select>
-              </label>
-            </div>
-            <div class="col-sm-6 form-group">
-              <label>Vacancies
-                <input type="number" [value]='0' min="0" class="form-control" formControlName="numberOfVacancies">
-              </label>
-            </div>
-          </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label for="">Profile
+          <select class="form-control" (change)="assignProfile($event)">
+            <option [value]="" [disabled]="true">Choose</option>
+            <option *ngFor="let profile of profiles" [value]="profile">{{profile}}</option>
+          </select>
+        </label>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label>Vacancies
+          <input type="number" [value]='0' min="0" class="form-control" formControlName="numberOfVacancies">
+        </label>
+      </div>
+    </div>
 
-          <div class="row">
-            <div class="col-sm-6 form-group">
-              <label>Description<br />
-                <textarea formControlName="description">
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label>Description<br />
+          <textarea formControlName="description">
                 </textarea>
-              </label>
-            </div>
-          </div>
+        </label>
+      </div>
+    </div>
 
-          <div class="row">
-            <div class="col-sm-6 form-group">
-              <label>Education
-                <input type="text" formControlName="educationalRequirements" class="form-control" />
-              </label>
-            </div>
-            <div class="col-sm-6 form-group">
-              <label>Experience(in years)
-                <input type="number" max="40" min="0" [value]="0" formControlName="experience" class="form-control" />
-              </label>
-            </div>
-          </div>
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label>Education
+          <input type="text" formControlName="educationalRequirements" class="form-control" />
+        </label>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label>Experience(in years)
+          <input type="number" max="40" min="0" [value]="0" formControlName="experience" class="form-control" />
+        </label>
+      </div>
+    </div>
 
-          <div class="row">
-            <div class="col-sm-6 form-group">
-              <label>Package
-                <input type="text" class="form-control" formControlName="package" />
-              </label>
-            </div>
-            <div class="col-sm-6 form-group">
-              <label>Location
-                <input type="text" class="form-control" formControlName="location" />
-              </label>
-            </div>
-          </div>
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label>Package
+          <input type="text" class="form-control" formControlName="package" />
+        </label>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label>Location
+          <input type="text" class="form-control" formControlName="location" />
+        </label>
+      </div>
+    </div>
 
 
-          <div class="row">
-            <div class="col-sm-6 form-group">
-              <label> Last Date to Apply
-                <input type="date" class="form-control" formControlName="targetDate">
-              </label>
-            </div>
-          </div>
-          <div>
-            <div class="row">
-              <div class="col-sm-4 form-group">
-                <label for="">Skill
-                  <input type="text" formControlName="skillName" class="form-control">
-                </label>
-              </div>
-              <div class="col-sm-4 form-group">
-                <label for="">Proficiency Level
-                  <select class="form-control" formControlName="skillProficiency">
-                    <option *ngFor="let proficiencyLevel of proficiencyLevels" [value]="proficiencyLevel">{{proficiencyLevel}}</option>
-                  </select>
-                </label>
-              </div>
-              <div class="col-sm-4">
-                <button class="custom-button" type="button" (click)="addSkill($event)">Add Skill</button>
-              </div>
-            </div>
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label> Last Date to Apply
+          <input type="date" class="form-control" formControlName="targetDate">
+        </label>
+      </div>
+    </div>
+    <div>
+      <div class="row">
+        <div class="col-sm-3 form-group">
+          <label for="">Skill
+            <input type="text" formControlName="skillName" class="form-control">
+          </label>
+        </div>
+        <div class="col-sm-3 form-group">
+          <label for="">Proficiency Level
+            <select class="form-control" formControlName="skillProficiency">
+              <option *ngFor="let proficiencyLevel of proficiencyLevels" [value]="proficiencyLevel">{{proficiencyLevel}}</option>
+            </select>
+          </label>
+        </div>
+        <div class="col-sm-3">
+          <button class="custom-button" type="button" (click)="addSkill($event)">Add Skill</button>
+        </div>
+        <div class="col-sm-3">
             <button class="custom-button" type="button" (click)="resetSkill($event)">Reset</button>
-            <div *ngIf="skillsRequired">
-              <table>
-                <thead>
-                  <th>
-                    Skill
-                  </th>
-                  <th>
-                    Proficiency
-                  </th>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let skill of skillsRequired">
-                      <td>
-                        {{skill.skill}}
-                      </td>
-                      <td>
-                        {{skill.proficiency}}
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-danger">Delete</button>
-                      </td>
-                    </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <button class="custom-button" type="submit">Submit</button>
-        </form>
-  </div>
+        </div>
+      </div>
+
+      <div *ngIf="skillsRequired.length>0">
+        <table>
+          <thead>
+            <th>
+              Skill
+            </th>
+            <th>
+              Proficiency
+            </th>
+            <th>
+              Remove
+            </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let skill of skillsRequired">
+              <td>
+                {{skill.skill}}
+              </td>
+              <td>
+                {{skill.proficiency}}
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger">Remove</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <button class="custom-button" [disabled]="!addNewJobForm.valid" type="submit">Submit</button>
+  </form>
 </div>

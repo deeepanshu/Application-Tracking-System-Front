@@ -1,3 +1,26 @@
-<p>
-  list-interviewers-admin works!
-</p>
+<div *ngIf="interviewers">
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Department</th>
+      <th>Profile</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let interviewer of interviewers">
+        <td>
+          {{interviewer.name}}
+        </td>
+        <td>
+          {{interviewer.email}}
+        </td>
+        <td>
+          {{interviewer.department}}
+        </td>
+        <td>
+          {{interviewer.profile}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

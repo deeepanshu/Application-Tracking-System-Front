@@ -1,0 +1,18 @@
+.linkAsButton{
+  text-decoration: none;
+}
+.linkAsButton:hover{
+  text-decoration: none;
+}
+p{
+  font-size: 18px;
+}
+.weirdFlex{
+  padding: 5px;
+}
+
+
+hr.divider {
+  margin: 10px;
+  border-width: 2px;
+}

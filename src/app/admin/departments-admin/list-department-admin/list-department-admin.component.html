@@ -1,3 +1,11 @@
-<p>
-  list-department-admin works!
-</p>
+List of Departments:
+<table>
+  <tbody>
+    <tr *ngFor="let department of departments">
+      <td>
+        {{department.departmentName}}
+      </td>
+      <td>{{department.profiles}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -11,9 +12,9 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   signUpForm = new FormGroup({
-    name: new FormControl(),
-    email: new FormControl(),
-    password: new FormControl()
+    name: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required])
   });
 
 
@@ -27,10 +28,11 @@ export class SignupComponent implements OnInit {
     this.authService.signUp(user).subscribe((data: SignUp) => {
       console.log(data);
       if (data.success) {
-        this.router.navigate(['/login']);
         this.signUpForm.reset();
+        this.router.navigate(['/login']);
+        this.toastr.success('Sign Up successful!!');
       } else {
-        alert('SignUp Failed');
+      this.toastr.error('SignUp Failed');
       }
     });
   }
@@ -38,7 +40,8 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {

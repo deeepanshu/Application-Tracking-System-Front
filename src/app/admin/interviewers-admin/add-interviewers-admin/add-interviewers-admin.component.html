@@ -1,3 +1,47 @@
-<p>
-  add-interviewers-admin works!
-</p>
+<h4>
+  Add Interviewer
+</h4>
+
+<form [formGroup]="addInterviewerForm" (ngSubmit)="submitInterviewer()">
+  <div class="row">
+    <div class="col-sm-6 form-group">
+      <label>Name
+        <input type="text" class="form-control" formControlName="name">
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 form-group">
+      <label>Email
+        <input type="text" class="form-control" formControlName="email">
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 form-group">
+      <label>Contact
+        <input type="text" class="form-control" formControlName="contact">
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 form-group">
+      <label>Department
+        <select class="form-control" (change)="onDepartmentChange($event)">
+          <option [disabled]="true">Choose</option>
+          <option *ngFor="let department of departments" [value]="department.departmentName">{{department.departmentName}}</option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 form-group">
+      <label>Profiles
+        <select class="form-control" (change)="onProfileChange($event)">
+            <option [disabled]="true">Choose</option>
+            <option *ngFor="let profile of profiles" [value]="profile">{{profile}}</option></select>
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="custom-button">Submit</button>
+</form>
