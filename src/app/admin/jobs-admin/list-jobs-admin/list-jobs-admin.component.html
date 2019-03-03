@@ -1,42 +1,45 @@
-<div class="container row" *ngIf="jobs else noJobsToShow">
-  <h3>List of Jobs</h3>
-  <table>
-    <thead>
-      <th>
-        Profile
-      </th>
-      <th>
-        Job Type
-      </th>
-      <th>
-        Created At
-      </th>
-      <th>
-        Last Date
-      </th>
-      <th>
-        Vacancies
-      </th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let job of jobs">
-        <td>
-          {{job.profile}}
-        </td>
-        <td>
-          {{job.jobType}}
-        </td>
-        <td>
-          {{job.createdAt | date}}
-        </td>
-        <td>
-          {{job.targetDate | date}}
-        </td>
-        <td>
-          {{job.numberOfVacancies}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="card">
+    <div *ngIf="jobs else noJobsToShow">
+        <h3 class="text-center">List of Jobs</h3>
+        <table>
+          <thead>
+            <th>
+              Profile
+            </th>
+            <th>
+              Job Type
+            </th>
+            <th>
+              Created At
+            </th>
+            <th>
+              Last Date
+            </th>
+            <th>
+              Vacancies
+            </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let job of jobs">
+              <td>
+                {{job.profile}}
+              </td>
+              <td>
+                {{job.jobType}}
+              </td>
+              <td>
+                {{job.createdAt | date}}
+              </td>
+              <td>
+                {{job.targetDate | date}}
+              </td>
+              <td>
+                {{job.numberOfVacancies}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-template #noJobsToShow><p>No jobs found.</p></ng-template>
+      
 </div>
-<ng-template #noJobsToShow><p>No jobs found.</p></ng-template>

@@ -19,6 +19,8 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
   isUserAuthenticated = false;
   jobId: string = '';
   job: Job;
+  alreadyApplied: boolean= false;
+  buttonText = "Apply Now";
   constructor(
     private route: ActivatedRoute,
     private jobService: JobsService,
@@ -35,8 +37,13 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
       if(token) {
         let decoded = helper.decodeToken(token);
         if(decoded.role == getLoginRoles().ROLE_CANDIDATE) {
-          this.candidateService.apply();
-          console.log("Logged In");
+          this.candidateService.apply(this.jobId).subscribe((response) => {
+            if(response.success){
+              this.toastr.success("Successfully Applied!");
+            } else {
+              this.toastr.error(response.message);
+            }
+          });
         } else {
           this.toastr.error("Operation Not Allowed");
         }
@@ -52,6 +59,12 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
     this.jobId = this.route.snapshot.paramMap.get("jobId");
     this.isUserAuthenticated = this.authService.getIsAuth();
     console.log('isUserAuth', this.isUserAuthenticated);
+    // this.jobService.isAlreadyAppliedForJob(this.jobId).subscribe((response) => {
+    //   console.log(response);
+    //   this.alreadyApplied = response.status;
+    //   this.buttonText = response.status? 'Already Applied' : 'Apply Now';
+    //   console.log(this.buttonText);
+    // })
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       this.isUserAuthenticated = isAuthenticated;
       console.log('isUserAuth', this.isUserAuthenticated);

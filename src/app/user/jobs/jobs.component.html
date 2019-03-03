@@ -12,9 +12,8 @@
       <div *ngIf="jobs.length > 0 else spinner">
         <div>
           <div class="card" *ngFor="let job of jobs">
-
-            <p class="title">{{job.profile}}</p>
-            <p>{{job.location}}</p>
+            <h3 class="text-center" style="padding-left: 10px">{{job.profile}}<span *ngIf="job.isHotJob">&nbsp;<img width="30px" src="assets/icons8-fire-48.png" /></span></h3>
+            <p  class="text-center">{{job.location}}</p>
             <hr class="divider" />
             <div class="row">
               <div class="col-sm-1 col-xs-1"></div>
@@ -23,7 +22,7 @@
                 <p>{{job.startDate | date}}</p>
               </div>
               <div class="col-sm-2 col-xs-2">
-                <p><b>Last Date</b></p>
+                <p><b>Apply Till</b></p>
                 <p>{{job.targetDate | date}}</p>
               </div>
               <div class="col-sm-2 col-xs-2">
@@ -43,7 +42,8 @@
             <div style="padding: 5px; padding-bottom: 15px;">
               <p style="text-align: left;">
                 <span style="margin: auto;">{{job.jobType}}</span>
-                <span style="float:right;"><button class="custom-button" type="button" (click)="viewDetails($event,job._id)">View Details &gt;</button></span>
+                <span style="float:right;"><button class="custom-button" type="button" (click)="viewDetails($event,job._id)">View
+                    Details &gt;</button></span>
               </p>
             </div>
 

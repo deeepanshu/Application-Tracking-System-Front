@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="card" *ngIf="!loading else stillLoading">
+    <div class="container">
+      <br />
+      <p><b>Candidate Name:</b> {{record.candidate.name}}</p>
+      <p><b>Profile Applied For:</b> {{record.job.profile}}</p>
+
+      <div *ngIf="record.candidate.education.length>0">
+        <h4><b>Education</b></h4>
+        <ul>
+          <li *ngFor="let edu of record.candidate.education">
+            {{edu.institution}} | {{edu.degree}} | {{edu.yearStarted}}
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="record.candidate.employment.length>0">
+        <h4><b>Employment</b></h4>
+        <ul>
+          <li *ngFor="let emp of record.candidate.employment">
+            {{emp.companyName}} | {{emp.profile}}
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="record.candidate.uploads.length>0">
+        <h4><b>Uploads</b></h4>
+        <ul>
+          <li *ngFor="let upload of record.candidate.uploads">
+            {{upload.docType}}
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="record.candidate.references.length>0">
+        <h4><b>References</b></h4>
+        <ul>
+          <li *ngFor="let reference of record.candidate.references">
+            {{reference.name}} | {{reference.position}} | {{reference.organisationName}}
+          </li>
+        </ul>
+      </div>
+      <hr />
+      <h3>Your Input!</h3>
+      
+
+      <div class="row">
+        <div class="col-sm-6 col-xs-6 form-group">
+          <label><h4>Comments</h4>
+            <textarea class="form-control" rows="5" cols="100" ></textarea>
+          </label>
+        </div>
+          <div class="col-xs-6">
+            <div class=" form-group">
+              <label>
+                <h4>Judgement</h4>
+                <select class="form-control" style="width: 150px">
+                  <option value="'NEXT ROUND'">NEXT ROUND</option>
+                  <option value="'SELECTED'">SELECTED</option>
+                  <option value="'NOT SELECTED'">NOT SELECTED</option>
+                  <option value="'PENDING'">PENDING</option>
+                </select>
+              </label>
+            </div>
+            <button class="custom-button">Submit</button>
+          </div>
+        </div>
+
+
+
+    </div>
+  </div>
+
+</div>
+<ng-template #stillLoading>
+  <app-spinner></app-spinner>
+</ng-template>

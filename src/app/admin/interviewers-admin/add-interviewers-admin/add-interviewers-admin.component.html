@@ -36,7 +36,7 @@
   </div>
   <div class="row">
     <div class="col-sm-6 form-group">
-      <label>Profiles
+      <label>Profile
         <select class="form-control" (change)="onProfileChange($event)">
             <option [disabled]="true">Choose</option>
             <option *ngFor="let profile of profiles" [value]="profile">{{profile}}</option></select>

@@ -38,11 +38,12 @@ p{
 }
 
 table{
-  width: 80%;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
 tr {
   border-top: 0.5px solid black;
-  border-bottom: 0.5px solid black;
 }
 td{
   padding: 5px;
@@ -70,7 +71,6 @@ th{
   color: #f2f2f2;
   background-color: #9C27B0;
 }
-
 .card{
   background-color: #FFFDE7;
   box-shadow: 1px 1px rgba(0,0,0,0.4);

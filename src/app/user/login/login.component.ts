@@ -20,11 +20,11 @@ export class LoginComponent implements OnInit {
   //kGkUh1ACa1
   isUserAuthenticated = false;
   loginForm = new FormGroup({
-    email: new FormControl("ilikeitmyway1998@gmail.com", [
+    email: new FormControl("d@gmail.com", [
       Validators.required,
       Validators.email
     ]),
-    password: new FormControl("qwer", [Validators.required])
+    password: new FormControl("qwerasdf", [Validators.required])
   });
 
   login() {

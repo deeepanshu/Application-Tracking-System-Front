@@ -12,8 +12,8 @@ export class CandidateService {
     private http: HttpClient
   ) { }
 
-  apply(){
-    
+  apply(jobId: string): Observable<{success: boolean, message: string}>{
+    return this.http.get<{success: boolean, message: string}>(`/api/job/apply/${jobId}`);
   }
 
   getCandidateObjectList(projection: string): Observable<Candidate>{

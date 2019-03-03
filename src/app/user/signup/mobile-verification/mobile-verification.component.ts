@@ -19,6 +19,7 @@ export class MobileVerificationComponent implements OnInit {
   }
   sendOtpEvent(event) {
     if (this.contact.length === 10) {
+
       this.authService.verifyMobile(this.contact).subscribe(response => {
         if (response.success) {
           this.toastr.success("OTP Sent!");

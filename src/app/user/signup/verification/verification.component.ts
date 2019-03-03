@@ -45,14 +45,13 @@ export class VerificationComponent implements OnInit {
           this.success = true;
           localStorage.setItem("token", response.token);
           if (response.isMobileVerified) {
-            this.step = 6;
+            this.step =3;
             return;
           }
           this.step = 2;
           let token = response.token;
           let decoded = helper.decodeToken(token);
           console.log(decoded);
-
           this.toastr.success("Email Verified");
         }
       });

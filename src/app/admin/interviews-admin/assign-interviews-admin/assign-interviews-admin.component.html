@@ -1,0 +1,93 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let job of jobs" class="card" style="margin-bottom: 10px;" (closed)="panelOpenState = false; applications = null; assignForm.reset();"
+    (opened)="panelOpenState = true; onPanelExpansion($event, job._id); assignForm.reset();">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{job.profile}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{job.targetDate}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <form [formGroup]="assignForm" (ngSubmit)="submitForm(job._id)">
+
+
+      <div class="row">
+        <div class="col-xs-6">
+          <h4>Interview Name</h4>
+          <mat-form-field>
+            <select matNativeControl (change)="onInterviewNameChange($event)">
+              <option [disabled]="true">Choose</option>
+              <option value="HR">HR</option>
+              <option value="Technical">Technical</option>
+              <option value="Screening">Screening</option>
+              <option value="General">General</option>
+              <option value="Other">Other</option>
+            </select>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-6">
+          <h4>Interviewer Type</h4>
+          <mat-form-field>
+            <select matNativeControl (change)="onInterviewTypeChange($event)">
+              <option [disabled]="true">Choose</option>
+              <option value="Face to Face">Face to Face</option>
+              <option value="Telephonic">Telephonic</option>
+              <option value="Skype">Skype</option>
+            </select>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+
+
+      <div class="row">
+        <div class="col-xs-6">
+          <h4>Select Candidate</h4>
+          <mat-form-field>
+            <select matNativeControl (change)="onCandidateChange($event)">
+              <option [disabled]="true">Choose</option>
+              <option *ngFor="let application of applications" [value]="application.candidate._id">
+                {{application.candidate.name}}</option>
+            </select>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-6">
+          <h4>Select Interviewer</h4>
+          <mat-form-field>
+            <select matNativeControl (change)="onInterviewerChange($event)">
+              <option [disabled]="true">Choose</option>
+              <option *ngFor="let interviewer of interviewers" [value]="interviewer._id">
+                {{interviewer.name}}</option>
+            </select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <h4>Select Date</h4>
+          <mat-form-field>
+            <input type="date" matInput formControlName="date">
+          </mat-form-field>
+        </div>
+        <div class="col-xs-6">
+          <h4>Select Time</h4>
+          <mat-form-field>
+            <input type="time" matInput formControlName="time">
+          </mat-form-field>
+        </div>
+      </div>
+      <button type="reset" class="secondary-button" (click)="resetForm()"> Reset</button>
+      <button [disabled]="!assignForm.valid" class="custom-button" type="submit">Submit</button>
+    </form>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<!-- 
+<mat-form-field>
+    <input matInput placeholder="First name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Age">
+  </mat-form-field> -->

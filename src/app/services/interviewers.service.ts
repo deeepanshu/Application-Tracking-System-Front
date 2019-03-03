@@ -12,6 +12,14 @@ export class InterviewersService {
     private http: HttpClient
   ) { }
 
+  getInterviews() {
+    return this.http.get(`/api/interviewer/interviews`);
+  }
+
+  getInterviewRecord(candidateid, jobid) {
+    return this.http.get(`/api/interviewer/interview/${candidateid}/${jobid}`);
+  }
+
   getAllInterviewers(): Observable<Interviewer[]> {
     return this.http.get<Interviewer[]>(`/api/interviewer/`);
   }

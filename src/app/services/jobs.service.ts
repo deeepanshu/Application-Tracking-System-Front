@@ -9,7 +9,19 @@ export class JobsService {
 
   constructor(private http: HttpClient) { }
 
-  addJob(job) {//
+  assignInterviewer(jobId, formData): Observable<{success, interview}> {
+    return this.http.post<{success, interview}>(`/api/job/assign/${jobId}`, formData);
+  }
+
+  getApplications(jobId: string) {
+    return this.http.get(`/api/job/applications/${jobId}`);
+  }
+
+  isAlreadyAppliedForJob(jobId: string): Observable<{status: boolean}> {
+    return this.http.get<{status:boolean}>(`/api/job/alreadyapplied/${jobId}`);
+  }
+
+  addJob(job) {
     return this.http.post(`/api/job/add`, job).pipe(
       catchError(this.handleError<any>('addJob'))
     );

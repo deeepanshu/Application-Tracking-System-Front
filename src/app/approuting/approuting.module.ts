@@ -24,6 +24,10 @@ import { ListInterviewersAdminComponent } from '../admin/interviewers-admin/list
 import { JobsComponent } from '../user/jobs/jobs.component';
 import { VerificationComponent } from '../user/signup/verification/verification.component';
 import { JobDetailsComponent } from '../user/job-details/job-details.component';
+import { InterviewsAdminComponent } from '../admin/interviews-admin/interviews-admin.component';
+import { AssignInterviewsAdminComponent } from '../admin/interviews-admin/assign-interviews-admin/assign-interviews-admin.component';
+import { ListInterviewsAdminComponent } from '../admin/interviews-admin/list-interviews-admin/list-interviews-admin.component';
+import { InterviewComponent } from '../user/interviewer/interview/interview.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'jobs', pathMatch: 'full'},
@@ -42,6 +46,10 @@ const routes: Routes = [
     {path: 'interviewers', component: InterviewersAdminComponent, children: [
       {path: 'add', component: AddInterviewersAdminComponent},
       {path: 'list', component: ListInterviewersAdminComponent}
+    ]},
+    {path: 'interviews', component: InterviewsAdminComponent, children: [
+      {path: 'assign', component: AssignInterviewsAdminComponent},
+      {path: 'list', component: ListInterviewsAdminComponent}
     ]}
   ]},
   {path: 'signup', component: SignupComponent},
@@ -49,6 +57,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'candidate', component: CandidateComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_CANDIDATE'}},
   {path: 'interviewer', component: InterviewerComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_INTERVIEWER'}},
+  {path: 'interviewer/interview/:jobid/:candidateid', component: InterviewComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_INTERVIEWER'}},
   {path: 'jobs', component: JobsComponent},
   {path: 'jobs/:jobId', component: JobDetailsComponent},
   { path: '**', redirectTo: '' }
