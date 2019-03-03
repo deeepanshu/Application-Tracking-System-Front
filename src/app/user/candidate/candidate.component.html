@@ -1,4 +1,68 @@
-<!-- <button type="button" class="custom-button" (click)="logout()">Logout</button> -->
-<p>
-  candidate works!
-</p>
+<div class="container">
+  <div class="card">
+    <div style="margin: 20px">
+      <h1>Dashboard</h1>
+      <mat-accordion>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h3>Your Profile</h3>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div *ngIf="!loading else stillLoading">
+            <p><b>Name</b>: {{candidate.name}}</p>
+            <p><b>Email</b>: {{candidate.email}}</p>
+            <p><b>Contact</b>: {{candidate.contact}}</p>
+            <p><b>Address</b>: {{candidate.address.houseAndFlat}}, {{candidate.address.locality}},
+              {{candidate.address.city}}, {{candidate.address.state}}, {{candidate.address.country}}</p>
+            <p><b>Education</b>:</p>
+            <ul>
+              <li *ngFor="let edu of candidate.education">
+                {{edu.institution}} | {{edu.degree}}
+              </li>
+            </ul>
+            <p><b>Employment</b>:</p>
+            <ul>
+              <li *ngFor="let emp of candidate.employment">
+                {{emp.companyName}} | {{emp.profile}}
+              </li>
+            </ul>
+            <p><b>References</b>:</p>
+            <ul>
+              <li *ngFor="let reference of candidate.references">
+                {{reference.name}} | {{reference.organisationName}} | {{reference.position}}
+              </li>
+            </ul>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h3>Your Applied Jobs</h3>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div>
+
+            <ul *ngIf="applications.length>0">
+              <li *ngFor="let application of applications">
+                {{application.job[0].profile}} | {{application.finalStatus}} | {{application.interviews.interviewName}} | {{application.interviews.interviewType}} | {{application.interviews.status}}
+              </li>
+            </ul>
+
+          </div>
+
+
+        </mat-expansion-panel>
+
+
+      </mat-accordion>
+    </div>
+  </div>
+</div>
+<ng-template #stillLoading>
+  <app-spinner></app-spinner>
+</ng-template>

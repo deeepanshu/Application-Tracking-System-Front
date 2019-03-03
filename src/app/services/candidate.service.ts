@@ -12,6 +12,14 @@ export class CandidateService {
     private http: HttpClient
   ) { }
 
+  getProfile(): Observable<any>{
+    return this.http.get<any>(`/api/candidate/profile`);
+  }
+
+  getProfileApplications(): Observable<any> {
+    return this.http.get<any>(`/api/candidate/profile/applications`);
+  }
+
   apply(jobId: string): Observable<{success: boolean, message: string}>{
     return this.http.get<{success: boolean, message: string}>(`/api/job/apply/${jobId}`);
   }
