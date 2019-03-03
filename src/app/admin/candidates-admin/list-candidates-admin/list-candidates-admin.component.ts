@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CandidateService } from '../../../services/candidate.service';
 
 @Component({
   selector: 'app-list-candidates-admin',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListCandidatesAdminComponent implements OnInit {
 
-  constructor() { }
+  loading: boolean = false;
+  candidates: any[]= [];
+
+  constructor(
+    private candidateService: CandidateService
+  ) { }
 
   ngOnInit() {
+    this.loading = true;
+    this.candidateService.getCandidates().subscribe((response) => {
+      this.candidates = response;
+      this.loading = false;
+    } )
   }
 
 }

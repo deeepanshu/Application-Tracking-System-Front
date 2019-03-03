@@ -1,11 +1,11 @@
-List of Departments:
-<table>
-  <tbody>
-    <tr *ngFor="let department of departments">
-      <td>
-        {{department.departmentName}}
-      </td>
-      <td>{{department.profiles}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="card">
+  <div style="margin: 20px;">
+  <h4><b>List of Departments:</b></h4>
+  <hr />
+  <ul>
+    <li *ngFor="let department of departments">
+      <p><b>{{department.departmentName}}</b>: {{department.profiles}}</p>
+    </li>
+  </ul>
+</div>
+</div>

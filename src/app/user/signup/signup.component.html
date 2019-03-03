@@ -1,5 +1,7 @@
 <div class="container">
   <div class="card">
+    <div class="signup">
+      <h3 class="text-center"><b>Sign Up Form</b></h3>
     <form [formGroup]="signUpForm" (ngSubmit)="signup()">
       <div class="row">
         <div class="col-sm-6 form-group">
@@ -26,4 +28,5 @@
     </form>
     <button class="secondary-button" (click)=" loginRoute($event)">Login</button>
   </div>
+</div>
 </div>

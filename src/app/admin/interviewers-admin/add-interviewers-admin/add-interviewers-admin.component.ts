@@ -45,13 +45,20 @@ export class AddInterviewersAdminComponent implements OnInit {
   }
 
   submitInterviewer(){
-    const interviewer = this.addInterviewerForm.value as Interviewer;
-    console.log(this.addInterviewerForm.value);
-    this.interviewerService.addInterviewer(interviewer).subscribe((response) => {
-      console.log(response);
-      this.toastr.success(`Added ${interviewer.name} as Interviewer!`);
-      this.router.navigate(['admin/interviewers/list']);
-    });
+    let isnum = /^\d+$/.test(this.addInterviewerForm.get('contact').value) && this.addInterviewerForm.get('contact').value.length ===10;
+    if(isnum){
+      const interviewer = this.addInterviewerForm.value as Interviewer;
+      console.log(this.addInterviewerForm.value);
+      this.interviewerService.addInterviewer(interviewer).subscribe((response) => {
+        console.log(response);
+        this.toastr.success(`Added ${interviewer.name} as Interviewer!`);
+        this.router.navigate(['admin/interviewers/list']);
+      });
+    }
+    else {
+      this.toastr.error("Invalid Contact Number");
+    }
+    
   }
 
   constructor(

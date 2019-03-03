@@ -13,13 +13,10 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li><a [routerLink]="['jobs']" routerLinkActive="router-link-active">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-
+          <li><a [routerLink]="['jobs']" routerLinkActive="router-link-active">Jobs</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" *ngIf="isUserAuthenticated">
-          <li><a [routerLink]="['']" routerLinkActive="router-link-active">Profile</a></li>
+          <li (click)="jumpToProfile($event)"><a class="profileButton">Profile</a></li>
           <li><a [routerLink]="" (click)="logout()">Logout</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" *ngIf="!isUserAuthenticated">

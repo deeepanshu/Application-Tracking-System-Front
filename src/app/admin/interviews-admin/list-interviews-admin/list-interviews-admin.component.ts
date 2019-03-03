@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../../../services/admin.service';
 
 @Component({
   selector: 'app-list-interviews-admin',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListInterviewsAdminComponent implements OnInit {
 
-  constructor() { }
+  interviews: any[] = [];
+  loading: boolean = false;
+
+  constructor(
+    private adminService: AdminService
+  ) { }
 
   ngOnInit() {
+    this.loading = true;
+    this.adminService.getInterviews().subscribe((response) => {
+      this.interviews = response;
+      this.loading = false;
+    })
   }
 
 }

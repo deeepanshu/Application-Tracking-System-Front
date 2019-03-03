@@ -24,8 +24,8 @@ export class CandidateService {
     return this.http.get(`/api/candidate/${id}`);
   }
   
-  getCandidates(){
-    return this.http.get(`/api/candidate`);
+  getCandidates(): Observable<any[]>{
+    return this.http.get<any[]>(`/api/candidate`);
   }
 
   addReferenceToCandidate(references) {

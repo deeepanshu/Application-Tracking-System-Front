@@ -27,4 +27,8 @@ export class InterviewersService {
   addInterviewer(data: Interviewer) {
     return this.http.post(`/api/interviewer/add`, data);
   }
+
+  giveFeedback(data): Observable<{success: boolean, saved: any, message: string}> {
+    return this.http.post<{success: boolean, saved: any, message: string}>(`/api/interviewer/feedback`, data);
+  }
 }

@@ -12,6 +12,10 @@ export class AdminService {
     private http: HttpClient
   ) { }
 
+  getInterviews(): Observable<any> {
+    return this.http.get<any>(`/api/admin/interviews`);
+  }
+
   getDepartments() : Observable<Department[]>{
     return this.http.get<Department[]>(`/api/admin/get/departments`);
   }

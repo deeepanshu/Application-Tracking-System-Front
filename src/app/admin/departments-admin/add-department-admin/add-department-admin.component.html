@@ -1,35 +1,46 @@
-<div>
-  <h4>Add Department</h4>
-  <form [formGroup]="addDepartmentForm" (ngSubmit)="submitDepartmentName()">
+<div class="card">
+  <div style="margin: 20px;">
     <div class="row">
-      <div class="col-sm-6 form-group">
-        <label>Department Name:
-          <input type="text" class="form-control" formControlName="departmentName">
-        </label>
+      <div class="col-sm-6 col-xs-6">
+        <h4><b>Add Department</b></h4>
+        <form [formGroup]="addDepartmentForm" (ngSubmit)="submitDepartmentName()">
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <label>Department Name:
+                <input type="text" class="form-control" formControlName="departmentName">
+              </label>
+            </div>
+          </div>
+          <button class="custom-button" type="submit">Submit</button>
+        </form>
+      </div>
+      <div class="col-sm-6 col-xs-6">
+        <h4><b>Add Profile in Department</b></h4>
+        <form [formGroup]="addProfileForm" (ngSubmit)="submitProfileName()">
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <label>Department Name
+                <select class="form-control" (change)="onDepartmentNameChange($event)">
+                  <option [disabled]="true" [value]="">Choose one</option>
+                  <option *ngFor="let department of departments" [value]="department.departmentName">{{department.departmentName}}</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <label>Profile Name
+                <input type="text" class="form-control" formControlName="profileName">
+              </label>
+            </div>
+          </div>
+          <button class="custom-button" type="submit">Submit</button>
+        </form>
       </div>
     </div>
-    <button class="custom-button" type="submit">Submit</button>
-  </form>
-  <hr />
-  <h4>Add Profile in Department</h4>
-  <form [formGroup]="addProfileForm" (ngSubmit)="submitProfileName()">
-    <div class="row">
-      <div class="col-sm-6 form-group">
-        <label>Department Name
-          <select class="form-control" (change)="onDepartmentNameChange($event)">
-            <option [disabled]="true" [value]="">Choose one</option>
-            <option *ngFor="let department of departments" [value]="department.departmentName">{{department.departmentName}}</option>
-          </select>
-        </label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 form-group">
-        <label>Profile Name
-          <input type="text" class="form-control" formControlName="profileName">
-        </label>
-      </div>
-    </div>
-    <button class="custom-button" type="submit">Submit</button>
-  </form>
+
+
+
+  </div>
+
 </div>

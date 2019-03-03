@@ -25,7 +25,7 @@
         <h4><b>Uploads</b></h4>
         <ul>
           <li *ngFor="let upload of record.candidate.uploads">
-            {{upload.docType}}
+            {{upload.docType}} | {{upload.link}}
           </li>
         </ul>
       </div>
@@ -39,31 +39,31 @@
       </div>
       <hr />
       <h3>Your Input!</h3>
-      
-
-      <div class="row">
-        <div class="col-sm-6 col-xs-6 form-group">
-          <label><h4>Comments</h4>
-            <textarea class="form-control" rows="5" cols="100" ></textarea>
-          </label>
-        </div>
+      <form [formGroup]="feedbackForm" (ngSubmit)="submitForm()">
+        <div class="row">
+          <div class="col-sm-6 col-xs-6 form-group">
+            <label>
+              <h4>Comments</h4>
+              <textarea class="form-control" rows="5" cols="100" formControlName="comments"></textarea>
+            </label>
+          </div>
           <div class="col-xs-6">
             <div class=" form-group">
               <label>
                 <h4>Judgement</h4>
-                <select class="form-control" style="width: 150px">
-                  <option value="'NEXT ROUND'">NEXT ROUND</option>
-                  <option value="'SELECTED'">SELECTED</option>
-                  <option value="'NOT SELECTED'">NOT SELECTED</option>
-                  <option value="'PENDING'">PENDING</option>
+                <select class="form-control" style="width: 150px" (click)="onJudgmentChange($event)">
+                  <option [disabled]="true" value="">Choose</option>
+                  <option value="NEXT ROUND">NEXT ROUND</option>
+                  <option value="SELECTED">SELECTED</option>
+                  <option value="NOT SELECTED">NOT SELECTED</option>
+                  <option value="PENDING">PENDING</option>
                 </select>
               </label>
             </div>
-            <button class="custom-button">Submit</button>
+            <button type="submit" class="custom-button">Submit</button>
           </div>
         </div>
-
-
+      </form>
 
     </div>
   </div>
