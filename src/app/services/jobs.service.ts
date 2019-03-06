@@ -17,8 +17,8 @@ export class JobsService {
     return this.http.get(`/api/job/applications/${jobId}`);
   }
 
-  isAlreadyAppliedForJob(jobId: string): Observable<{status: boolean}> {
-    return this.http.get<{status:boolean}>(`/api/job/alreadyapplied/${jobId}`);
+  isAlreadyAppliedForJob(jobId: string): Observable<{success: boolean}> {
+    return this.http.get<{success: boolean}>(`/api/job/alreadyapplied/${jobId}`);
   }
 
   addJob(job) {

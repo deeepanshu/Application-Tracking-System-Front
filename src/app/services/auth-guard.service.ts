@@ -17,21 +17,14 @@ export class AuthGuardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const token = this.authService.getToken();
-    if(!token) {
-      return true;
-    }else {
-      const tokenPayload = helper.decodeToken(token);
-      if(!this.authService.getIsAuth()){
+    if ( token ) {
+      if (helper.isTokenExpired(token)) {
         return true;
       } else {
-        if(tokenPayload.role === getLoginRoles().ROLE_ADMIN || tokenPayload.role === getLoginRoles().ROLE_CANDIDATE || tokenPayload.role === getLoginRoles().ROLE_INTERVIEWER){
-          this.router.navigate([getRouteFromRole()[tokenPayload.role]]);
-          return false;
-        }
-        else {
-          return true;
-        }
+        this.authService.jumpToProfile();
+        return false;
       }
     }
+    return true;
   }
 }

@@ -13,10 +13,10 @@ export class ReferencesComponent implements OnInit {
 
   @Output() public increment = new EventEmitter<void>();
   @Output() public decrement = new EventEmitter<void>();
-  
+
 
   references= [];
-  
+
   referenceForm = new FormGroup({
     name: new FormControl(),
     organisationName:  new FormControl(),
@@ -53,7 +53,7 @@ export class ReferencesComponent implements OnInit {
       })
     }
     else {
-      this.toastr.error('Atleast 3 references!');
+      this.toastr.error('Atleast 2 references!');
     }
   }
 

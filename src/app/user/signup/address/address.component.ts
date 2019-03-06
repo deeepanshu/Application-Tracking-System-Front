@@ -29,13 +29,15 @@ export class AddressComponent implements OnInit {
       .subscribe(response => {
         this.address = response.address;
         console.log(this.address);
-        this.addressForm.setValue({
-          houseAndFlat: this.address.houseAndFlat,
-          locality: this.address.locality,
-          city: this.address.city,
-          state: this.address.state,
-          country: this.address.country
-        });
+        if (this.address) {
+          this.addressForm.setValue({
+            houseAndFlat: this.address.houseAndFlat,
+            locality: this.address.locality,
+            city: this.address.city,
+            state: this.address.state,
+            country: this.address.country
+          });
+        }
       });
   }
 

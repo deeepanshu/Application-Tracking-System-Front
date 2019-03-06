@@ -3,6 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Subject, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import {JwtHelperService} from '@auth0/angular-jwt';
+import getLoginRoles from '../types/loginRoles.interface';
+import getRouteFromRole from '../types/roleRoute.interface';
+const helper = new JwtHelperService();
 @Injectable({
   providedIn: 'root'
 })
@@ -118,6 +122,24 @@ export class AuthService {
       `api/auth/validate/mobile/${identifier}`
     );
   }
+
+
+  jumpToProfile() {
+    const token = this.getToken();
+    if (token) {
+      const decoded = helper.decodeToken(token);
+      if (decoded) {
+        if (
+          decoded.role === getLoginRoles().ROLE_ADMIN ||
+          decoded.role === getLoginRoles().ROLE_INTERVIEWER ||
+          decoded.role === getLoginRoles().ROLE_CANDIDATE
+        ) {
+          this.router.navigate([getRouteFromRole()[decoded.role]]);
+        }
+      }
+    }
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead

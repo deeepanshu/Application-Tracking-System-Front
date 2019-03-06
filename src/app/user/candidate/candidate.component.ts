@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { AuthService } from "../../services/auth.service";
-import { Router } from "@angular/router";
-import { Subscription } from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { CandidateService } from '../../services/candidate.service';
 
 @Component({
-  selector: "app-candidate",
-  templateUrl: "./candidate.component.html",
-  styleUrls: ["./candidate.component.css"]
+  selector: 'app-candidate',
+  templateUrl: './candidate.component.html',
+  styleUrls: ['./candidate.component.css']
 })
 export class CandidateComponent implements OnInit {
   loading: boolean= false;
@@ -37,6 +37,11 @@ export class CandidateComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    this.router.navigate(["login"]);
+    this.router.navigate(['login']);
   }
+
+  getFileUrl(fileName)  {
+    return `/api/candidate/get/assets/${fileName}`;
+  }
+
 }

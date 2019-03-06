@@ -3,7 +3,6 @@
     <div style="margin: 20px">
       <h1>Dashboard</h1>
       <mat-accordion>
-
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -33,6 +32,15 @@
               <li *ngFor="let reference of candidate.references">
                 {{reference.name}} | {{reference.organisationName}} | {{reference.position}}
               </li>
+            </ul>
+            <p><b>Uploads</b>:</p>
+            <ul style="list-style-type: none">
+              <li><p><b>{{candidate.uploads[0].docType}}</b></p></li>
+              <iframe width="100%" height="600px" [src]="getFileUrl(candidate.uploads[0].link) | safe"></iframe>
+              <li><p><b>{{candidate.uploads[1].docType}}</b></p></li>
+              <iframe width="100%" height="600px" [src]="getFileUrl(candidate.uploads[1].link) | safe"></iframe>
+              <li><p><b>{{candidate.uploads[2].docType}}</b></p></li>
+              <iframe width="100%" height="600px" [src]="getFileUrl(candidate.uploads[2].link) | safe"></iframe>
             </ul>
           </div>
         </mat-expansion-panel>

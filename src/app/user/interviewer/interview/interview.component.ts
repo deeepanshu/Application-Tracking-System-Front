@@ -46,7 +46,7 @@ export class InterviewComponent implements OnInit {
       console.log(this.record);
       this.loading = false;
       if(this.record){
-       
+
         this.introduction = this.record.candidate.uploads[1].link;
         this.cover = this.record.candidate.uploads[0].cover;
       }
@@ -81,9 +81,12 @@ export class InterviewComponent implements OnInit {
           this.toastr.error(response.message);
         }
       })
-      
+
     }
-    
+
+  }
+  getFileUrl(fileName)  {
+    return `/api/candidate/get/assets/${fileName}`;
   }
 
 }

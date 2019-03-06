@@ -1,0 +1,12 @@
+ul {
+  margin: 15px;
+  display: table;
+  width: 100%;
+  text-align: center;
+}
+
+
+ul > li {
+  color: #f2f2f2;
+  display: table-cell;
+}

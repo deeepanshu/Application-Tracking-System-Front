@@ -1,67 +1,72 @@
-<div>
-  <div style="display: flex">
-    <div class="form-group mb-2">
-      <button id="resumePseudo" type="button" class="custom-form-button" (click)="resumeFile.click()">
-        Upload Resume
-      </button>
+<div class="container">
+  <div class="card">
+    <div class="inside">
+      <div style="display: flex">
+        <div class="form-group mb-2">
+          <button id="resumePseudo" type="button" class="custom-button" (click)="resumeFile.click()">
+            Upload Resume
+          </button>
+        </div>
+        <p class="file-names text-left" style="width: 100% ;border:2px solid #D24D57; border-style: dotted;" *ngIf="resumeFileName; else noFileNames"
+          #resumeName>
+          {{ resumeFileName }}
+        </p>
+      </div>
+
+      <div style="display: flex">
+        <div class="form-group mb-2">
+          <button id="introPseudo" type="button" class="custom-button" (click)="introVideo.click()">
+            Upload Intro Video
+          </button>
+        </div>
+        <p class="file-names text-left" style="width: 100% ;border:2px solid #D24D57; border-style: dotted;" *ngIf="introFileName; else noFileNames"
+          #introName>
+          {{ introFileName }}
+        </p>
+      </div>
+
+      <div style="display: flex">
+        <div class="form-group mb-2">
+          <button id="coverPseudo" type="button" class="custom-button" (click)="coverLetter.click()">
+            Upload Cover Letter
+          </button>
+        </div>
+        <p class="file-names text-left" style="width: 100% ;border:2px solid #D24D57; border-style: dotted;" *ngIf="coverLetterFileName; else noFileNames"
+          #introName>
+          {{ coverLetterFileName }}
+        </p>
+      </div>
+
+
+      <!-- <div style="display: flex">
+          <div class="form-group mb-2">
+            <button id="coverPseudo" type="button" class="custom-form-button" (click)="certificates.click()">
+              Upload Certificates
+            </button>
+          </div>
+          <p class="file-names text-left" style="width: 100% ;border:2px solid #D24D57; border-style: dotted;" *ngIf="certificatesName; else noFileNames"
+            #introName>
+            {{ certificatesName }}
+          </p>
+        </div> -->
+
+
+      <ng-template #noFileNames>
+        <p class="file-names text-left" style="width: 100% ;border:2px solid #D24D57; border-style: dotted;" #introName>
+          No File Selected!
+        </p>
+      </ng-template>
+
+
+      <input type="file" id="resumeFile" style="display: none;" (change)="onResumeChange($event)" #resumeFile />
+      <input type="file" id="introVideo" style="display: none;" (change)="onIntroChange($event)" #introVideo />
+      <input type="file" id="coverLetter" style="display: none;" (change)="onCoverLetterChange($event)" #coverLetter />
+      <!-- <input type="file" id="certificates" style="display: none;" (change)="onCertificatesChange($event)" multiple
+          #certificates /> -->
+
+      <button class="custom-button" type="button" (click)="goBack()">Back</button>
+      <button class="custom-button" type="button" (click)="submitFiles()">Submit</button>
     </div>
-    <p class="file-names text-left" style="width: 100% ;border:2px solid #D24D57; border-style: dotted;" *ngIf="resumeFileName; else noFileNames"
-      #resumeName>
-      {{ resumeFileName }}
-    </p>
   </div>
 
-  <div style="display: flex">
-    <div class="form-group mb-2">
-      <button id="introPseudo" type="button" class="custom-form-button" (click)="introVideo.click()">
-        Upload Intro Video
-      </button>
-    </div>
-    <p class="file-names text-left" style="width: 100% ;border:2px solid #D24D57; border-style: dotted;" *ngIf="introFileName; else noFileNames"
-      #introName>
-      {{ introFileName }}
-    </p>
-  </div>
-
-  <div style="display: flex">
-    <div class="form-group mb-2">
-      <button id="coverPseudo" type="button" class="custom-form-button" (click)="coverLetter.click()">
-        Upload Cover Letter
-      </button>
-    </div>
-    <p class="file-names text-left" style="width: 100% ;border:2px solid #D24D57; border-style: dotted;" *ngIf="coverLetterFileName; else noFileNames"
-      #introName>
-      {{ coverLetterFileName }}
-    </p>
-  </div>
-
-
-  <!-- <div style="display: flex">
-  <div class="form-group mb-2">
-    <button id="coverPseudo" type="button" class="custom-form-button" (click)="certificates.click()">
-      Upload Certificates
-    </button>
-  </div>
-  <p class="file-names text-left" style="width: 100% ;border:2px solid #D24D57; border-style: dotted;" *ngIf="certificatesName; else noFileNames"
-    #introName>
-    {{ certificatesName }}
-  </p>
-</div> -->
-
-
-  <ng-template #noFileNames>
-    <p class="file-names text-left" style="width: 100% ;border:2px solid #D24D57; border-style: dotted;" #introName>
-      No File Selected!
-    </p>
-  </ng-template>
-
-
-  <input type="file" id="resumeFile" style="display: none;" (change)="onResumeChange($event)" #resumeFile />
-  <input type="file" id="introVideo" style="display: none;" (change)="onIntroChange($event)" #introVideo />
-  <input type="file" id="coverLetter" style="display: none;" (change)="onCoverLetterChange($event)" #coverLetter />
-  <!-- <input type="file" id="certificates" style="display: none;" (change)="onCertificatesChange($event)" multiple
-  #certificates /> -->
-
-  <button class="custom-button" type="button" (click)="goBack()">Back</button>
-  <button class="custom-button" type="button" (click)="submitFiles()">Submit</button>
 </div>

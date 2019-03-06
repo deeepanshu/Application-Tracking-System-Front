@@ -1,0 +1,10 @@
+.inside{
+  margin: 0 auto;
+    width: fit-content;
+}
+.card{
+  padding: 20px;
+}
+input{
+  width: 250px;
+}

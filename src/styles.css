@@ -17,7 +17,15 @@ button {
   background-color: #790e8b;
   border: 2px solid #790e8b;
   color: #f2f2f2;
-  
+}
+.custom-button-already-applied {
+  background-color: green;
+  border: 2px solid green;
+  color: #f2f2f2;
+}
+
+.custom-button-already-applied:disabled{
+  cursor: not-allowed;
 }
 .secondary-button {
   background-color: #FFFDE7;

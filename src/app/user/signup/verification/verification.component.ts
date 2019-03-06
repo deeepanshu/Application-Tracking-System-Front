@@ -45,7 +45,7 @@ export class VerificationComponent implements OnInit {
           this.success = true;
           localStorage.setItem("token", response.token);
           if (response.isMobileVerified) {
-            this.step =3;
+            this.step = 3;
             return;
           }
           this.step = 2;

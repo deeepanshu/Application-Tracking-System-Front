@@ -4,6 +4,7 @@ import { JobsService } from '../../../services/jobs.service';
 import { InterviewersService } from 'src/app/services/interviewers.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-assign-interviews-admin',
   templateUrl: './assign-interviews-admin.component.html',
@@ -23,7 +24,7 @@ export class AssignInterviewsAdminComponent implements OnInit {
     interviewName: new FormControl('', [Validators.required]),
     interviewType: new FormControl('', [Validators.required])
   })
-  
+
 
   resetForm() {
     this.assignForm.reset();
@@ -36,6 +37,7 @@ export class AssignInterviewsAdminComponent implements OnInit {
       this.jobService.assignInterviewer(jobId, formData).subscribe((response) =>{
         if(response.success){
           this.assignForm.reset();
+          this.router.navigate(['/admin/interviews/list'])
           this.toastr.success("Assigned Interview");
         }
         console.log(response);
@@ -65,7 +67,8 @@ export class AssignInterviewsAdminComponent implements OnInit {
   constructor(
     private jobService: JobsService,
     private interviewerService: InterviewersService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
 

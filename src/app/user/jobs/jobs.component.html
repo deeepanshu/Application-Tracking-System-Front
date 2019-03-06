@@ -7,10 +7,17 @@
       <div class="card">
         <div style="margin: 10px">
           <h4>Job Type</h4>
-          <p><input type="radio" name="jobType" value="Intern" (change)="onJobTypeChangeListener($event)"> &nbsp;Intern</p>
-          <p><input type="radio" name="jobType" value="Full Time" (change)="onJobTypeChangeListener($event)"> &nbsp;Full Time</p>
-          <p><input type="radio" name="jobType" value="Part Time" (change)="onJobTypeChangeListener($event)"> &nbsp;Part Time</p>
-          <p><input type="radio" name="jobType" value="" (change)="onJobTypeChangeListener($event)"> &nbsp;Clear</p>
+          <form [formGroup]="jobFilter">
+          <div style="margin: 20px;">
+            <p><input type="radio" name="jobType" formControlName="jobType" value="Intern" (change)="onJobTypeChangeListener($event)">
+              &nbsp;Intern</p>
+            <p><input type="radio" name="jobType" formControlName="jobType" value="Full Time" (change)="onJobTypeChangeListener($event)">
+              &nbsp;Full Time</p>
+            <p><input type="radio" name="jobType" formControlName="jobType" value="Part Time" (change)="onJobTypeChangeListener($event)">
+              &nbsp;Part Time</p>
+            <p style="cursor: pointer" (click)="removeFilter($event)"><span style="color: red;" class="glyphicon glyphicon-remove"></span>&nbsp;Clear</p>
+          </div>
+        </form>
         </div>
       </div>
     </div>

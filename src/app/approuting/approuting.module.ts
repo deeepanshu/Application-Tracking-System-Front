@@ -54,7 +54,7 @@ const routes: Routes = [
   ]},
   {path: 'signup', component: SignupComponent},
   {path: 'signup/verify/:token', component: VerificationComponent},
-  {path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
   {path: 'candidate', component: CandidateComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_CANDIDATE'}},
   {path: 'interviewer', component: InterviewerComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_INTERVIEWER'}},
   {path: 'interviewer/interview/:jobid/:candidateid', component: InterviewComponent, canActivate: [RoleGuard], data: {expectedRole: 'ROLE_INTERVIEWER'}},

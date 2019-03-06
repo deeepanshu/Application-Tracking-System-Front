@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router } from '@angular/router';
 import { JobsService } from 'src/app/services/jobs.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { JwtHelperService} from '@auth0/angular-jwt';
@@ -19,8 +19,8 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
   isUserAuthenticated = false;
   jobId: string = '';
   job: Job;
-  alreadyApplied: boolean= false;
-  buttonText = "Apply Now";
+  alreadyApplied: boolean = false;
+  buttonText = 'Apply Now';
   constructor(
     private route: ActivatedRoute,
     private jobService: JobsService,
@@ -39,13 +39,14 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
         if(decoded.role == getLoginRoles().ROLE_CANDIDATE) {
           this.candidateService.apply(this.jobId).subscribe((response) => {
             if(response.success){
-              this.toastr.success("Successfully Applied!");
+              this.toastr.success('Successfully Applied!');
+              this.checkIfAlreadyApplied();
             } else {
               this.toastr.error(response.message);
             }
           });
         } else {
-          this.toastr.error("Operation Not Allowed");
+          this.toastr.error('Operation Not Allowed');
         }
       }
     } else {
@@ -55,16 +56,21 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
+  checkIfAlreadyApplied(){
+    this.jobService.isAlreadyAppliedForJob(this.jobId).subscribe((response) => {
+      console.log(response);
+      // if(response.status)
+      this.alreadyApplied = response.success;
+      this.buttonText = response.success? 'Already Applied' : 'Apply Now';
+      console.log(this.buttonText);
+    });
+  }
+
   ngOnInit() {
-    this.jobId = this.route.snapshot.paramMap.get("jobId");
+    this.jobId = this.route.snapshot.paramMap.get('jobId');
     this.isUserAuthenticated = this.authService.getIsAuth();
     console.log('isUserAuth', this.isUserAuthenticated);
-    // this.jobService.isAlreadyAppliedForJob(this.jobId).subscribe((response) => {
-    //   console.log(response);
-    //   this.alreadyApplied = response.status;
-    //   this.buttonText = response.status? 'Already Applied' : 'Apply Now';
-    //   console.log(this.buttonText);
-    // })
+    this.checkIfAlreadyApplied();
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       this.isUserAuthenticated = isAuthenticated;
       console.log('isUserAuth', this.isUserAuthenticated);

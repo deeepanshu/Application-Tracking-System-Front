@@ -3,6 +3,7 @@ import { JobsService } from "src/app/services/jobs.service";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { AuthService } from "src/app/services/auth.service";
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: "app-jobs",
@@ -14,7 +15,12 @@ export class JobsComponent implements OnInit, OnDestroy {
   isUserAuthenticated = false;
   jobs: any = [];
   noOfJobs: number = 0;
-  filter = "";
+  filter = '';
+
+  jobFilter = new FormGroup({
+    jobType: new FormControl('')
+  });
+
   constructor(
     private jobService: JobsService,
     private router: Router,
@@ -28,6 +34,12 @@ export class JobsComponent implements OnInit, OnDestroy {
       this.filter = event.target.value;
       this.getJobs();
     }
+  }
+
+  removeFilter(event) {
+      this.filter = '';
+      this.getJobs();
+      this.jobFilter.reset();
   }
 
   getJobs() {

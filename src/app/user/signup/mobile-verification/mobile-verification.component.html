@@ -1,19 +1,24 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-6 form-group">
-      <label>Contact No.
-        <input type="text" class="form-control" (input)="contactEvent($event)">
-      </label>
+  <div class="card">
+    <div class="inside">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <label>Contact No.
+            <input type="text" class="form-control" (input)="contactEvent($event)">
+          </label>
+        </div>
+      </div>
+      <button type="button" class="custom-button" (click)="sendOtpEvent($event)">Send OTP</button>
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <label>
+            OTP:
+            <input type="text" class="form-control" (input)="otpEvent($event)">
+          </label>
+        </div>
+      </div>
+      <button type="button" class="custom-button" (click)="verifyOTPEvent($event)">Verify OTP</button>
     </div>
+
   </div>
-  <button type="button" class="custom-button" (click)="sendOtpEvent($event)">Send OTP</button>
-  <div class="row">
-    <div class="col-sm-6 form-group">
-      <label>
-        OTP:
-        <input type="text" class="form-control" (input)="otpEvent($event)">
-      </label>
-    </div>
-  </div>
-  <button type="button" class="custom-button" (click)="verifyOTPEvent($event)">Verify OTP</button>
 </div>

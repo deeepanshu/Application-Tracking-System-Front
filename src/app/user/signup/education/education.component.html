@@ -1,80 +1,82 @@
-<div>
-  <h3>Add Education</h3>
+<div class="container">
+  <div class="card">
+    <div class="inside">
+        <h3>Add Education</h3>
 
-  <form [formGroup]="educationForm" (ngSubmit)="submitEducation()">
-    <div class="row">
-      <div class="col-sm-6 col-xs-6 form-group">
-        <label>Institution/School
-          <input type="text" class="form-control" formControlName="institution">
-        </label>
-      </div>
-      <div class="col-sm-6 col-xs-6 form-group">
-        <label>Degree/Major
-          <input type="text" class="form-control" formControlName="degree">
-        </label>
-      </div>
-    </div>
-  
-    <div class="row">
-      <div class="col-sm-6 col-xs-6 form-group">
-        <label>Year Started
-          <input type="text" class="form-control" formControlName="yearStarted">
-        </label>
-      </div>
-      <div class="col-sm-6 col-xs-6 form-group">
-          <label>Year Ended
-            <input type="text" class="form-control" formControlName="yearEnded">
-          </label>
+        <form [formGroup]="educationForm" (ngSubmit)="submitEducation()">
+          <div class="row">
+            <div class="col-sm-6 col-xs-6 form-group">
+              <label>Institution/School
+                <input type="text" class="form-control" formControlName="institution">
+              </label>
+            </div>
+            <div class="col-sm-6 col-xs-6 form-group">
+              <label>Degree/Major
+                <input type="text" class="form-control" formControlName="degree">
+              </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 col-xs-6 form-group">
+              <label>Year Started
+                <input type="text" class="form-control" formControlName="yearStarted">
+              </label>
+            </div>
+            <div class="col-sm-6 col-xs-6 form-group">
+                <label>Year Ended
+                  <input type="text" class="form-control" formControlName="yearEnded">
+                </label>
+              </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 col-xs-6 form-group">
+              <label>
+                <input type="checkbox" class="" formControlName="stillPursuing">
+                Still Pursuing
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-5">
+              <button class="custom-button" (click)="addEducation($event)" type="button">Add</button>
+            </div>
+            <div class="col-sm-5">
+              <button class="custom-button" type="button">Reset</button>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-5">
+                  <button class="custom-button" type="button" (click)="goBack($event)">Back</button>
+              </div>
+              <div class="col-sm-5">
+                  <button class="custom-button" type="submit">Submit</button>
+              </div>
+            </div>
+        </form>
+        <div *ngIf="education.length>0">
+          <h4>Added Education History</h4>
+          <table>
+            <thead>
+              <th>Institution</th>
+              <th>Degree</th>
+              <th>Year Started</th>
+              <th>Year Ended</th>
+              <th>Still Pursuing</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let edu of education">
+                <td>{{edu.institution}}</td>
+                <td>{{edu.degree}}</td>
+                <td>{{edu.yearStarted}}</td>
+                <td>{{edu.yearEnded}}</td>
+                <td>{{edu.stillPursuing | booleanToMessage}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+
     </div>
-    
-    <div class="row">
-      <div class="col-sm-6 col-xs-6 form-group">
-        <label>
-          <input type="checkbox" class="" formControlName="stillPursuing">
-          Still Pursuing
-        </label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 col-xs-3">
-        <button class="custom-button" (click)="addEducation($event)" type="button">Add</button>
-      </div>
-      <div class="col-sm-3 col-xs-3">
-        <button class="custom-button" type="button">Reset</button>
-      </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-3 col-xs-3">
-            <button class="custom-button" type="button" (click)="goBack($event)">Back</button>
-        </div>
-        <div class="col-sm-3 col-xs-3">
-            <button class="custom-button" type="submit">Submit</button>
-        </div>
-      </div>
-  </form>
-  <div *ngIf="education.length>0">
-    <h4>Added Education History</h4>
-    <table>
-      <thead>
-        <th>Institution</th>
-        <th>Degree</th>
-        <th>Year Started</th>
-        <th>Year Ended</th>
-        <th>Still Pursuing</th>
-      </thead>
-      <tbody>
-        <tr *ngFor="let edu of education">
-          <td>{{edu.institution}}</td>
-          <td>{{edu.degree}}</td>
-          <td>{{edu.yearStarted}}</td>
-          <td>{{edu.yearEnded}}</td>
-          <td>{{edu.stillPursuing}}</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
-
-
-
 </div>

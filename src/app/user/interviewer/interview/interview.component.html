@@ -22,12 +22,15 @@
         </ul>
       </div>
       <div *ngIf="record.candidate.uploads.length>0">
-        <h4><b>Uploads</b></h4>
-        <ul>
-          <li *ngFor="let upload of record.candidate.uploads">
-            {{upload.docType}} | {{upload.link}}
-          </li>
-        </ul>
+          <p><b>Uploads</b>:</p>
+          <ul style="list-style-type: none">
+            <li><p><b>{{record.candidate.uploads[0].docType}}</b></p></li>
+            <iframe width="90%" height="600px" [src]="getFileUrl(record.candidate.uploads[0].link) | safe"></iframe>
+            <li><p><b>{{record.candidate.uploads[1].docType}}</b></p></li>
+            <iframe width="90%" height="600px" [src]="getFileUrl(record.candidate.uploads[1].link) | safe"></iframe>
+            <li><p><b>{{record.candidate.uploads[2].docType}}</b></p></li>
+            <iframe width="90%" height="600px" [src]="getFileUrl(record.candidate.uploads[2].link) | safe"></iframe>
+          </ul>
       </div>
       <div *ngIf="record.candidate.references.length>0">
         <h4><b>References</b></h4>

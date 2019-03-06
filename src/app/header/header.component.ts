@@ -15,30 +15,19 @@ const helper = new JwtHelperService();
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   private authListenerSubs: Subscription;
-  //kGkUh1ACa1
   isUserAuthenticated = false;
+
   constructor(private authService: AuthService, private router: Router) {}
 
   logout() {
     this.authService.logout();
   }
 
+
   jumpToProfile(event) {
-    let token = this.authService.getToken();
-    if (token) {
-      let decoded = helper.decodeToken(token);
-      if (decoded) {
-        if (
-          decoded.role === getLoginRoles().ROLE_ADMIN ||
-          decoded.role === getLoginRoles().ROLE_INTERVIEWER ||
-          decoded.role === getLoginRoles().ROLE_CANDIDATE
-        ) {
-          this.router.navigate([getRouteFromRole()[decoded.role]]);
-          // localStorage.setItem("token", response.token);
-        }
-      }
-    }
+    this.authService.jumpToProfile();
   }
+
 
   ngOnInit() {
     this.isUserAuthenticated = this.authService.getIsAuth();

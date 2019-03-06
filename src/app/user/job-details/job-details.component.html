@@ -27,9 +27,9 @@
           <p>{{job.numberOfVacancies}}</p>
         </div>
       </div>
-     
+
     </div>
-    
+
     <div class="card">
       <div class="container descriptionBox">
         <p><b>Job Type</b>: {{job.jobType}}</p>
@@ -39,7 +39,8 @@
         <h4><b>Description</b></h4>
         <p class="text-justify">{{job.description}}</p>
         <div style="text-align: center;">
-          <button class="custom-button"  (click)="apply($event)" type="button">{{buttonText}}</button>
+          <button class="custom-button-already-applied" [disabled]="true" *ngIf="alreadyApplied"  type="button">{{buttonText}}</button>
+          <button class="custom-button" *ngIf="!alreadyApplied" (click)="apply($event)"  type="button">{{buttonText}}</button>
         </div>
       </div>
     </div>
