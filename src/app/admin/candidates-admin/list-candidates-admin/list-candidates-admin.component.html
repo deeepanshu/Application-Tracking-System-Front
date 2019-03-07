@@ -1,8 +1,45 @@
 <div class="card">
   <div style="margin: 20px">
+    <div *ngIf="!loading else stillLoading">
+      <h3 class="text-center">List Of Candidates</h3>
+      <div class="container-fluid" style="margin-top: 10px">
+        <div class="table-row header">
+          <div class="column index">#</div>
+          <div class="wrapper attributes">
+            <div class="wrapper title-comment-module-reporter">
+              <div class="wrapper title-comment">
+                <div class="column title">Name</div>
+                <div class="column comment">Email</div>
+                <div class="column comment">Contact</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="table-row" *ngFor="let candidate of candidates; let i = index">
+          <div class="column index">{{i + 1}}</div>
+          <div class="wrapper attributes">
+            <div class="wrapper title-comment-module-reporter">
+              <div class="wrapper title-comment">
+                <div class="column title">{{candidate.name}}</div>
+                <div class="column comment">{{candidate.email}}</div>
+                <div class="column comment">{{candidate.contact}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--
+<div class="card">
+  <div style="margin: 20px">
 
     <div *ngIf="!loading else stillLoading">
-    
+
       <h3 class="text-center">List Of Candidates</h3>
       <hr />
       <table>
@@ -34,7 +71,7 @@
       </table>
     </div>
   </div>
-</div>
+</div> -->
 <ng-template #stillLoading>
   <app-spinner></app-spinner>
 </ng-template>

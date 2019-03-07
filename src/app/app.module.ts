@@ -15,7 +15,6 @@ import { CandidatesAdminComponent } from "./admin/candidates-admin/candidates-ad
 import { ListCandidatesAdminComponent } from "./admin/candidates-admin/list-candidates-admin/list-candidates-admin.component";
 import { ListSkillsJobsComponent } from "./admin/jobs-admin/list-skills-jobs/list-skills-jobs.component";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { JobCardsComponent } from "./admin/jobs-admin/job-cards/job-cards.component";
 import { LongDateTimeToDatePipe } from "./pipes/long-date-time-to-date.pipe";
 import { LoginComponent } from "./user/login/login.component";
 import { SignupComponent } from "./user/signup/signup.component";
@@ -52,7 +51,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { TitleCasePipe } from './title-case.pipe';
 import { InterviewComponent } from './user/interviewer/interview/interview.component';
 import { SafePipePipe } from './safe-pipe.pipe';
-
+import { ErrorInterceptor} from './services/error.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +62,6 @@ import { SafePipePipe } from './safe-pipe.pipe';
     CandidatesAdminComponent,
     ListCandidatesAdminComponent,
     ListSkillsJobsComponent,
-    JobCardsComponent,
     LongDateTimeToDatePipe,
     LoginComponent,
     SignupComponent,
@@ -111,6 +109,7 @@ import { SafePipePipe } from './safe-pipe.pipe';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     TitleCasePipe
   ],
   bootstrap: [AppComponent]

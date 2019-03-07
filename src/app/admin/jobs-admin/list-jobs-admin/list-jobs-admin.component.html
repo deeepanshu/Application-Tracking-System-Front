@@ -1,4 +1,47 @@
 <div class="card">
+  <div style="margin: 20px">
+    <div *ngIf="!loading else stillLoading">
+      <h3 class="text-center">List of Jobs</h3>
+      <div class="container-fluid" style="margin-top: 10px">
+        <div class="table-row header">
+          <div class="column index">#</div>
+          <div class="wrapper attributes">
+            <div class="wrapper title-comment-module-reporter">
+              <div class="wrapper title-comment">
+                <div class="column title">Job Profile</div>
+                <div class="column comment">Job Type</div>
+                <div class="column comment">Created At</div>
+                <div class="column comment">Last Date</div>
+                <div class="column comment">Vacancies</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="table-row" *ngFor="let job of jobs; let i = index">
+          <div class="column index">{{i + 1}}</div>
+          <div class="wrapper attributes">
+            <div class="wrapper title-comment-module-reporter">
+              <div class="wrapper title-comment">
+                <div class="column title">{{job.profile}}</div>
+                <div class="column comment">{{job.jobType}}</div>
+                <div class="column comment">{{job.createdAt | date}}</div>
+                <div class="column comment">{{job.targetDate | date}}</div>
+                <div class="column comment">{{job.numberOfVacancies}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- <div class="card">
     <div *ngIf="jobs else noJobsToShow">
         <h3 class="text-center">List of Jobs</h3>
         <hr/>
@@ -41,6 +84,9 @@
           </tbody>
         </table>
       </div>
-      <ng-template #noJobsToShow><p>No jobs found.</p></ng-template>
-      
-</div>
+</div> -->
+<ng-template #noJobsToShow><p>No jobs found.</p></ng-template>
+
+<ng-template #stillLoading>
+  <app-spinner></app-spinner>
+</ng-template>

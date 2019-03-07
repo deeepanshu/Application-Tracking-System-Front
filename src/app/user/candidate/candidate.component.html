@@ -57,7 +57,7 @@
 
             <ul *ngIf="applications.length>0">
               <li *ngFor="let application of applications">
-                {{application.job[0].profile}} | {{application.finalStatus}} | {{application.interviews.interviewName}} | {{application.interviews.interviewType}} | {{application.interviews.status}}
+                {{application.job[0].profile}} | {{application.finalStatus | titleCase}} | {{application.interviews.interviewName}} | {{application.interviews.interviewType }} | {{application.interviews.status | titleCase}}
               </li>
             </ul>
 

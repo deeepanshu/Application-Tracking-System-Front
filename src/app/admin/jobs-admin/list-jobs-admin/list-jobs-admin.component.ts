@@ -8,15 +8,18 @@ import { JobsService } from 'src/app/services/jobs.service';
 })
 export class ListJobsAdminComponent implements OnInit {
   jobs: any;
+  loading: boolean = false;
 
   constructor(private jobService: JobsService) {}
 
   getAllJobs() {
     this.jobService.getAllJobs().subscribe(data => {
       this.jobs = data;
+      this.loading = false;
     });
   }
   ngOnInit() {
+    this.loading = true;
     this.getAllJobs();
   }
 }
