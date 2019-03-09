@@ -3,7 +3,7 @@
     <h4 class="text-center">Found {{noOfJobs}} Jobs For You!</h4>
   </div>
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-md-3">
       <div class="card">
         <div style="margin: 10px">
           <h4>Job Type</h4>
@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-9">
+    <div class="col-md-9">
       <div *ngIf="jobs.length>0 else spinner">
         <div>
           <div class="card" *ngFor="let job of jobs">
@@ -30,24 +30,24 @@
             <p class="text-center">{{job.location}}</p>
             <hr class="divider" />
             <div class="row">
-              <div class="col-sm-1 col-xs-1"></div>
-              <div class="col-sm-2 col-xs-2">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2">
                 <p><b>Start Date</b></p>
                 <p>{{job.startDate | date}}</p>
               </div>
-              <div class="col-sm-2 col-xs-2">
+              <div class="col-sm-2">
                 <p><b>Apply Till</b></p>
                 <p>{{job.targetDate | date}}</p>
               </div>
-              <div class="col-sm-2 col-xs-2">
+              <div class="col-sm-2">
                 <p><b>Package</b></p>
                 <p>{{job.package}}</p>
               </div>
-              <div class="col-sm-2 col-xs-2">
+              <div class="col-sm-2">
                 <p><b>Posted On</b></p>
                 <p>{{job.createdAt | date}}</p>
               </div>
-              <div class="col-sm-2 col-xs-2">
+              <div class="col-sm-2">
                 <p><b>Experience</b></p>
                 <p>{{job.experience}} years</p>
               </div>

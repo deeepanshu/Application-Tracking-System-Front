@@ -23,15 +23,14 @@ export class ErrorInterceptor implements HttpInterceptor {
         } else {
           if (error.status === 504) {
             errorMessage = `Cannot connect to server right now! Try again later..`;
-          } else if (error.status === 401) {
-            errorMessage = `Unauthorised`;
-            this.authService.logout();
-            this.router.navigate([`/login`]);
-          } else {
-            errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+            this.toastr.error(errorMessage);
+          }
+          if (error.status === 401 ) {
+            errorMessage = `Not Authorised`;
+            this.toastr.error(errorMessage);
           }
         }
-        this.toastr.error(errorMessage);
+        // this.toastr.error(errorMessage);
         return throwError(errorMessage);
       })
     )

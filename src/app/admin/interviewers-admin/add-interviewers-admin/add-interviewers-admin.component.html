@@ -4,18 +4,30 @@
       Add Interviewer
     </h3>
     <hr />
+    <div class="inside">
+
+
     <form [formGroup]="addInterviewerForm" (ngSubmit)="submitInterviewer()">
       <div class="row">
         <div class="col-sm-6 form-group">
           <label>Name
             <input type="text" class="form-control" formControlName="name">
           </label>
+          <div *ngIf="addInterviewerForm.controls['name'].errors && !addInterviewerForm.controls['name'].pristine"
+            class="error-msg">
+            <div [hidden]="!addInterviewerForm.controls['name'].errors.required">Name is required.</div>
+          </div>
         </div>
 
         <div class="col-sm-6 form-group">
           <label>Email
             <input type="text" class="form-control" formControlName="email">
           </label>
+          <div *ngIf="addInterviewerForm.controls['email'].errors && !addInterviewerForm.controls['email'].pristine"
+            class="error-msg">
+            <div [hidden]="!addInterviewerForm.controls['email'].errors.required">Email is required.</div>
+            <div [hidden]="!addInterviewerForm.controls['email'].errors.patternInvalid">Email is invalid.</div>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -23,6 +35,10 @@
           <label>Contact
             <input type="text" class="form-control" formControlName="contact">
           </label>
+          <div *ngIf="addInterviewerForm.controls['contact'].errors && !addInterviewerForm.controls['contact'].pristine"
+            class="error-msg">
+            <div [hidden]="!addInterviewerForm.controls['contact'].errors.required">Contact is required.</div>
+          </div>
         </div>
         <div class="col-sm-6 form-group">
           <label>Department
@@ -31,6 +47,10 @@
               <option *ngFor="let department of departments" [value]="department.departmentName">{{department.departmentName}}</option>
             </select>
           </label>
+          <div *ngIf="addInterviewerForm.controls['department'].errors && !addInterviewerForm.controls['department'].pristine"
+            class="error-msg">
+            <div [hidden]="!addInterviewerForm.controls['department'].errors.required">Department is required.</div>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -45,5 +65,6 @@
       </div>
       <button type="submit" [disabled]="!addInterviewerForm.valid" class="custom-button">Submit</button>
     </form>
+  </div>
   </div>
 </div>

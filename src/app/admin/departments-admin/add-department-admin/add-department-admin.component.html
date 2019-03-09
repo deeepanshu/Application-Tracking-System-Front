@@ -9,9 +9,15 @@
               <label>Department Name:
                 <input type="text" class="form-control" formControlName="departmentName">
               </label>
+              <div *ngIf="addDepartmentForm.controls['departmentName'].errors && !addDepartmentForm.controls['departmentName'].pristine"
+                class="error-msg">
+                <div [hidden]="!addDepartmentForm.controls['departmentName'].errors.required">Department Name is
+                  required.</div>
+              </div>
             </div>
           </div>
-          <button class="custom-button" type="submit">Submit</button>
+          <br />
+          <button class="custom-button" [disabled]="!addDepartmentForm.valid" type="submit">Submit</button>
         </form>
       </div>
       <div class="col-sm-6 col-xs-6">
@@ -32,9 +38,15 @@
               <label>Profile Name
                 <input type="text" class="form-control" formControlName="profileName">
               </label>
+              <div *ngIf="addProfileForm.controls['profileName'].errors && !addProfileForm.controls['profileName'].pristine"
+                class="error-msg">
+                <div [hidden]="!addProfileForm.controls['profileName'].errors.required">Department Name is
+                  required.</div>
+              </div>
             </div>
           </div>
-          <button class="custom-button" type="submit">Submit</button>
+          <br />
+          <button class="custom-button" [disabled]="!addProfileForm.valid" type="submit">Submit</button>
         </form>
       </div>
     </div>

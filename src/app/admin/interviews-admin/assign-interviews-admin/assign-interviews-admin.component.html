@@ -10,10 +10,8 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <form [formGroup]="assignForm" (ngSubmit)="submitForm(job._id)">
-
-
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col-md-6  col-sm-6" style="padding: 10px">
           <h4>Interview Name</h4>
           <mat-form-field>
             <select matNativeControl (change)="onInterviewNameChange($event)">
@@ -26,7 +24,7 @@
             </select>
           </mat-form-field>
         </div>
-        <div class="col-xs-6">
+        <div class="col-md-6 col-sm-6" style="padding: 10px">
           <h4>Interviewer Type</h4>
           <mat-form-field>
             <select matNativeControl (change)="onInterviewTypeChange($event)">
@@ -43,7 +41,7 @@
 
 
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col-md-6 col-sm-6" style="padding: 10px">
           <h4>Select Candidate</h4>
           <mat-form-field>
             <select matNativeControl (change)="onCandidateChange($event)">
@@ -53,7 +51,7 @@
             </select>
           </mat-form-field>
         </div>
-        <div class="col-xs-6">
+        <div class="col-md-6 col-sm-6" style="padding: 10px">
           <h4>Select Interviewer</h4>
           <mat-form-field>
             <select matNativeControl (change)="onInterviewerChange($event)">
@@ -65,13 +63,13 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col-md-6 col-sm-6" style="padding: 10px">
           <h4>Select Date</h4>
           <mat-form-field>
             <input type="date" matInput formControlName="date">
           </mat-form-field>
         </div>
-        <div class="col-xs-6">
+        <div class="col-md-6 col-sm-6" style="padding: 10px">
           <h4>Select Time</h4>
           <mat-form-field>
             <input type="time" matInput formControlName="time">
@@ -84,7 +82,7 @@
   </mat-expansion-panel>
 </mat-accordion>
 
-<!-- 
+<!--
 <mat-form-field>
     <input matInput placeholder="First name">
   </mat-form-field>

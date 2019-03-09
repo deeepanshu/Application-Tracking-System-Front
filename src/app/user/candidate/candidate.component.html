@@ -38,7 +38,11 @@
               <li><p><b>{{candidate.uploads[0].docType}}</b></p></li>
               <iframe width="100%" height="600px" [src]="getFileUrl(candidate.uploads[0].link) | safe"></iframe>
               <li><p><b>{{candidate.uploads[1].docType}}</b></p></li>
-              <iframe width="100%" height="600px" [src]="getFileUrl(candidate.uploads[1].link) | safe"></iframe>
+              <!-- <iframe width="100%" height="600px" [src]="getFileUrl(candidate.uploads[1].link) | safe"></iframe> -->
+              <video width="100%" height="600px" controls>
+                  <source [src]="getFileUrl(candidate.uploads[1].link) | safe" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
               <li><p><b>{{candidate.uploads[2].docType}}</b></p></li>
               <iframe width="100%" height="600px" [src]="getFileUrl(candidate.uploads[2].link) | safe"></iframe>
             </ul>

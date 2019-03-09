@@ -20,22 +20,7 @@ export class AddJobsAdminComponent implements OnInit {
   proficiencyLevels = ['Basic', 'Medium', 'Advanced'];
   skillsRequired = [];
 
-  addNewJobForm = new FormGroup({
-    type: new FormControl('', [Validators.required]),
-    profile: new FormControl('', [Validators.required]),
-    hotJob: new FormControl(false),
-    description: new FormControl(''),
-    educationalRequirements: new FormControl('', [Validators.required]),
-    skillsRequired: new FormControl(''),
-    location: new FormControl('', [Validators.required]),
-    experience: new FormControl('', [Validators.required]),
-    package: new FormControl(''),
-    targetDate: new FormControl('', [Validators.required]),
-    numberOfVacancies: new FormControl(''),
-    skillName: new FormControl(''),
-    skillProficiency: new FormControl(''),
-    startDate: new FormControl('', [Validators.required])
-  });
+  addNewJobForm: FormGroup;
 
   constructor(
     private toastr: ToastrService,
@@ -44,6 +29,22 @@ export class AddJobsAdminComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.addNewJobForm = new FormGroup({
+      type: new FormControl('', [Validators.required]),
+      profile: new FormControl('', [Validators.required]),
+      hotJob: new FormControl(false),
+      description: new FormControl(''),
+      educationalRequirements: new FormControl('', [Validators.required]),
+      skillsRequired: new FormControl(''),
+      location: new FormControl('', [Validators.required]),
+      experience: new FormControl('', [Validators.required]),
+      package: new FormControl(''),
+      targetDate: new FormControl('', [Validators.required]),
+      numberOfVacancies: new FormControl(''),
+      skillName: new FormControl(''),
+      skillProficiency: new FormControl(''),
+      startDate: new FormControl('', [Validators.required])
+    });
   }
 
 
@@ -76,31 +77,34 @@ export class AddJobsAdminComponent implements OnInit {
   }
 
   submitForm() {
-    const formValue = {
-      jobType: this.addNewJobForm.get('type').value,
-      isHotJob: this.addNewJobForm.get('hotJob').value,
-      targetDate: this.addNewJobForm.get('targetDate').value,
-      profile: this.addNewJobForm.get('profile').value,
-      package: this.addNewJobForm.get('package').value,
-      description: this.addNewJobForm.get('description').value,
-      educationalRequirements: this.addNewJobForm.get('educationalRequirements').value,
-      skills: this.skillsRequired,
-      blockedJobs: [],
-      startDate: this.addNewJobForm.get('startDate').value,
-      location: this.addNewJobForm.get('location').value,
-      experience: this.addNewJobForm.get('experience').value,
-      numberOfVacancies: this.addNewJobForm.get('numberOfVacancies').value
-    };
-    this.jobService.addJob(formValue).subscribe(response => {
-      console.log(response);
-      if(response.status){
-        this.toastr.success('Job Added');
-        this.router.navigate(['admin/jobs/list']);
-      } else {
-        this.toastr.error('Job Not Saved');
-      }
-    })
-    console.log(formValue);
+    if(this.addNewJobForm.valid){
+      const formValue = {
+        jobType: this.addNewJobForm.get('type').value,
+        isHotJob: this.addNewJobForm.get('hotJob').value,
+        targetDate: this.addNewJobForm.get('targetDate').value,
+        profile: this.addNewJobForm.get('profile').value,
+        package: this.addNewJobForm.get('package').value,
+        description: this.addNewJobForm.get('description').value,
+        educationalRequirements: this.addNewJobForm.get('educationalRequirements').value,
+        skills: this.skillsRequired,
+        blockedJobs: [],
+        startDate: this.addNewJobForm.get('startDate').value,
+        location: this.addNewJobForm.get('location').value,
+        experience: this.addNewJobForm.get('experience').value,
+        numberOfVacancies: this.addNewJobForm.get('numberOfVacancies').value
+      };
+      this.jobService.addJob(formValue).subscribe(response => {
+        console.log(response);
+        if (response.status) {
+          this.toastr.success('Job Added');
+          this.router.navigate(['admin/jobs/list']);
+        } else {
+          this.toastr.error('Job Not Saved');
+        }
+      });
+    } else {
+      this.toastr.error("Invalid Form Details");
+    }
   }
 
 }

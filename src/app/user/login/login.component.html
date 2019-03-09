@@ -5,18 +5,26 @@
       <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="row">
           <div class="col-sm-6 form-group">
-            <label>Email
+            <label>Email*
               <input type="text" formControlName="email" class="form-control"  placeholder="E-Mail">
             </label>
+            <div *ngIf="loginForm.controls['email'].errors && !loginForm.controls['email'].pristine" class="error-msg">
+              <div [hidden]="!loginForm.controls['email'].errors.required">Email is required.</div>
+              <div [hidden]="!loginForm.controls['email'].errors.patternInvalid">Email is invalid.</div>
+            </div>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6 form-group">
-            <label>Password
+            <label>Password*
               <input type="password" formControlName="password" class="form-control" placeholder="Password">
             </label>
+            <div *ngIf="loginForm.controls['password'].errors && !loginForm.controls['password'].pristine" class="error-msg">
+              <div [hidden]="!loginForm.controls['password'].errors.required">Password is required.</div>
+            </div>
           </div>
         </div>
+        <br/>
         <button style="align-self: center" class="custom-button" [disabled]="!loginForm.valid" type="submit">Submit</button>
       </form>
       <button class="secondary-button" (click)="signupRoute($event)">Sign Up</button>

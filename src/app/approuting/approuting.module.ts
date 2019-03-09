@@ -28,10 +28,12 @@ import { InterviewsAdminComponent } from '../admin/interviews-admin/interviews-a
 import { AssignInterviewsAdminComponent } from '../admin/interviews-admin/assign-interviews-admin/assign-interviews-admin.component';
 import { ListInterviewsAdminComponent } from '../admin/interviews-admin/list-interviews-admin/list-interviews-admin.component';
 import { InterviewComponent } from '../user/interviewer/interview/interview.component';
+import { DashboardComponent } from '../admin/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'jobs', pathMatch: 'full'},
   {path: 'admin', component: AdminComponent,  canActivate: [RoleGuard], data: {expectedRole: 'ROLE_ADMIN'}, children: [
+    {path: 'dashboard', component: DashboardComponent},
     {path: 'jobs', component: JobsAdminComponent, children: [
       {path: 'add', component: AddJobsAdminComponent},
       {path: 'list', component: ListJobsAdminComponent}

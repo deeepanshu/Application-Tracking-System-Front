@@ -57,13 +57,15 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
   }
 
   checkIfAlreadyApplied(){
-    this.jobService.isAlreadyAppliedForJob(this.jobId).subscribe((response) => {
-      console.log(response);
-      // if(response.status)
-      this.alreadyApplied = response.success;
-      this.buttonText = response.success? 'Already Applied' : 'Apply Now';
-      console.log(this.buttonText);
-    });
+    if (this.isUserAuthenticated) {
+      this.jobService.isAlreadyAppliedForJob(this.jobId).subscribe((response) => {
+        console.log(response);
+        // if(response.status)
+        this.alreadyApplied = response.success;
+        this.buttonText = response.success? 'Already Applied' : 'Apply Now';
+        console.log(this.buttonText);
+      });
+    }
   }
 
   ngOnInit() {
@@ -74,6 +76,9 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       this.isUserAuthenticated = isAuthenticated;
       console.log('isUserAuth', this.isUserAuthenticated);
+      if ( this.isUserAuthenticated ) {
+
+      }
     });
     if(this.jobId) {
       this.jobService.getJobById(this.jobId).subscribe((response) => {

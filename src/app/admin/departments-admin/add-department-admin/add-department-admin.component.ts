@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AdminService } from 'src/app/services/admin.service';
 import { Department } from 'src/app/types/department.interface';
 import { Router } from '@angular/router';
@@ -11,14 +11,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./add-department-admin.component.css']
 })
 export class AddDepartmentAdminComponent implements OnInit {
-  addDepartmentForm = new FormGroup({
-    departmentName: new FormControl('')
-  });
+  addDepartmentForm: FormGroup;
 
-  addProfileForm = new FormGroup({
-    departmentName : new FormControl(''),
-    profileName: new FormControl('')
-  });
+  addProfileForm: FormGroup;
 
   departments: Department[] = [];
 
@@ -75,6 +70,14 @@ export class AddDepartmentAdminComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.addDepartmentForm = new FormGroup({
+      departmentName: new FormControl('', [Validators.required])
+    });
+
+    this.addProfileForm = new FormGroup({
+      departmentName : new FormControl('',[Validators.required]),
+      profileName: new FormControl('',[Validators.required])
+    });
     this.getDepartments();
   }
 }

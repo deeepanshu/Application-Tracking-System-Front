@@ -5,24 +5,24 @@
       <h3 class='text-center' style="padding-left: 10px">{{job.profile}}<span *ngIf="job.isHotJob">&nbsp;<img width="30px" src="assets/icons8-fire-48.png"/></span></h3>
       <br />
       <div class="row">
-        <div class="col-sm-1 col-xs-1"></div>
-        <div class="col-sm-2 col-xs-2">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2">
           <p><b>Start Date</b></p>
           <p>{{job.startDate | date}}</p>
         </div>
-        <div class="col-sm-2 col-xs-2">
+        <div class="col-sm-2">
           <p><b>Apply Till</b></p>
           <p>{{job.targetDate | date}}</p>
         </div>
-        <div class="col-sm-2 col-xs-2">
+        <div class="col-sm-2">
           <p><b>Package</b></p>
           <p>{{job.package}}</p>
         </div>
-        <div class="col-sm-2 col-xs-2">
+        <div class="col-sm-2">
           <p><b>Posted On</b></p>
           <p>{{job.createdAt | date}}</p>
         </div>
-        <div class="col-sm-2 col-xs-2">
+        <div class="col-sm-2">
           <p><b>Vacancies</b></p>
           <p>{{job.numberOfVacancies}}</p>
         </div>

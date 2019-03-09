@@ -5,23 +5,33 @@
     <form [formGroup]="signUpForm" (ngSubmit)="signup()">
       <div class="row">
         <div class="col-sm-6 form-group">
-          <label>Name
+          <label>Name*
             <input type="text" class="form-control" formControlName="name" placeholder="Name">
           </label>
+          <div *ngIf="signUpForm.controls['name'].errors && !signUpForm.controls['name'].pristine" class="error-msg">
+              <div [hidden]="!signUpForm.controls['name'].errors.required">Name is required.</div>
+            </div>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6 form-group">
-          <label>Email
+          <label>Email*
             <input type="text" class="form-control" formControlName="email" placeholder="Email">
           </label>
+          <div *ngIf="signUpForm.controls['email'].errors && !signUpForm.controls['email'].pristine" class="error-msg">
+              <div [hidden]="!signUpForm.controls['email'].errors.required">Email is required.</div>
+              <div [hidden]="!signUpForm.controls['email'].errors.patternInvalid">Email is invalid.</div>
+            </div>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6 form-group">
-          <label>Password
+          <label>Password*
             <input type="password" class="form-control" formControlName="password" placeholder="Password">
           </label>
+          <div *ngIf="signUpForm.controls['password'].errors && !signUpForm.controls['password'].pristine" class="error-msg">
+          <div [hidden]="!signUpForm.controls['password'].errors">Password is invalid</div>
+          </div>
         </div>
       </div>
       <button class="custom-button" [disabled]='!signUpForm.valid' type="submit">Invite Me!</button>

@@ -23,11 +23,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/toastr.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/toastr.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/tether/dist/js/tether.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {

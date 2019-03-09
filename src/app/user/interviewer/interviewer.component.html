@@ -1,4 +1,55 @@
 <div class="container">
+  <div class="card">
+    <div *ngIf="!loading else stillLoading">
+      <h3 class="text-center">Scheduled Interviews</h3>
+    </div>
+    <div class="container-fluid" style="margin-top: 10px">
+      <div class="table-row header">
+        <div class="column index">#</div>
+        <div class="wrapper attributes">
+          <div class="wrapper title-comment-module-reporter">
+            <div class="wrapper title-comment">
+              <div class="column title">Candidate Name</div>
+              <div class="column comment">Profile</div>
+              <div class="column comment" style="width: 40px;">Round</div>
+              <div class="column comment">Date</div>
+              <div class="column comment">Time</div>
+              <div class="column comment">Status</div>
+              <div class="column comment">Action</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="table-row" *ngFor="let interview of interviews; let i = index">
+        <div class="column index">{{i + 1}}</div>
+        <div class="wrapper attributes">
+          <div class="wrapper title-comment-module-reporter">
+            <div class="wrapper title-comment">
+              <div class="column title">{{interview.candidate.name}}</div>
+              <div class="column comment">{{interview.job.profile}}</div>
+              <div class="column comment" style="width: 40px;">{{interview.interviews[0].roundNo}}</div>
+              <div class="column comment">{{interview.interviews[0].date | date}}</div>
+              <div class="column comment">{{interview.interviews[0].time}}</div>
+              <div class="column comment">{{interview.interviews[0].status | titleCase}}</div>
+              <div class="column comment" [ngSwitch]="interview.interviews[0].status">
+                <button class="secondary-button" *ngSwitchCase="'PENDING'" (click)="takeInterview($event, interview.job._id,interview.candidate._id )">Finalize</button>
+                <button class="secondary-button" *ngSwitchCase="'NOT TAKEN YET'" (click)="takeInterview($event, interview.job._id,interview.candidate._id )">Take
+                  Interview</button>
+                <span class="glyphicon glyphicon-ok" *ngSwitchCase="'NEXT ROUND'"></span>
+                <span class="glyphicon glyphicon-ok" *ngSwitchCase="'SELECTED'"></span>
+                <span class="glyphicon glyphicon-ok" *ngSwitchCase="'NOT SELECTED'"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--
+<div class="container">
 
   <div class="card">
     <h3 class="text-center">Scheduled Interviews</h3>
@@ -12,6 +63,15 @@
           Profile Applied For
         </th>
         <th>
+          Round No.
+        </th>
+        <th>
+          Date
+        </th>
+        <th>
+          Time
+        </th>
+        <th>
           Status
         </th>
         <th>
@@ -22,6 +82,9 @@
         <tr *ngFor="let interview of interviews">
           <td>{{interview.candidate.name}}</td>
           <td>{{interview.job.profile}}</td>
+          <td>{{interview.interviews[0].roundNo}} </td>
+          <td>{{interview.interviews[0].date | date}} </td>
+          <td>{{interview.interviews[0].time}} </td>
           <td>{{interview.interviews[0].status | titleCase}} </td>
           <td [ngSwitch]="interview.interviews[0].status">
             <button class="secondary-button" *ngSwitchCase="'PENDING'" (click)="takeInterview($event, interview.job._id,interview.candidate._id )">Finalize</button>
@@ -35,7 +98,7 @@
       </tbody>
     </table>
   </div>
-</div>
+</div> -->
 <ng-template #stillLoading>
   <app-spinner></app-spinner>
 </ng-template>

@@ -1,4 +1,45 @@
 <div class="card" *ngIf="interviewers">
+    <h3 style="margin: 20px" class="text-center">List of Interviewers</h3>
+    <br />
+    <div>
+        <div *ngIf="!loading else stillLoading">
+          <div class="container-fluid" style="margin-top: 10px">
+            <div class="table-row header">
+              <div class="column index">#</div>
+              <div class="wrapper attributes">
+                <div class="wrapper title-comment-module-reporter">
+                  <div class="wrapper title-comment">
+                    <div class="column title">Name</div>
+                    <div class="column comment">Email</div>
+                    <div class="column comment">Contact</div>
+                    <div class="column comment">Department</div>
+                    <div class="column comment">Profile</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="table-row" *ngFor="let interviewer of interviewers; let i = index">
+              <div class="column index">{{i + 1}}</div>
+              <div class="wrapper attributes">
+                <div class="wrapper title-comment-module-reporter">
+                  <div class="wrapper title-comment">
+                    <div class="column title">{{interviewer.name}}</div>
+                    <div class="column comment">{{interviewer.email}}</div>
+                    <div class="column comment">{{interviewer.contact}}</div>
+                    <div class="column comment">{{interviewer.department}}</div>
+                    <div class="column comment">{{interviewer.profile}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+
+
+<!-- <div class="card" *ngIf="interviewers">
 <h3 class="text-center">List of Interviewers</h3>
 <br />
   <table>
@@ -26,3 +67,7 @@
     </tbody>
   </table>
 </div>
+ -->
+<ng-template #stillLoading>
+    <app-spinner></app-spinner>
+  </ng-template>

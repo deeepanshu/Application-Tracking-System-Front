@@ -52,6 +52,7 @@ import { TitleCasePipe } from './title-case.pipe';
 import { InterviewComponent } from './user/interviewer/interview/interview.component';
 import { SafePipePipe } from './safe-pipe.pipe';
 import { ErrorInterceptor} from './services/error.interceptor';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +92,8 @@ import { ErrorInterceptor} from './services/error.interceptor';
     ListInterviewsAdminComponent,
     TitleCasePipe,
     InterviewComponent,
-    SafePipePipe
+    SafePipePipe,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

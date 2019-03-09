@@ -19,6 +19,7 @@ export class ListInterviewsAdminComponent implements OnInit {
     this.loading = true;
     this.adminService.getInterviews().subscribe((response) => {
       this.interviews = response;
+      // console.log(this.interviews);
       this.loading = false;
     })
   }

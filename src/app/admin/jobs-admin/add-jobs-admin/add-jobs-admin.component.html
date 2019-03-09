@@ -1,7 +1,7 @@
 <div class="card">
   <div class="inside">
     <form [formGroup]="addNewJobForm" (ngSubmit)="submitForm()">
-      <div class="row ">
+      <div class="row justify-content-md-center">
         <div class="col-sm-6 form-group">
           <label>Job Type
             <select class="form-control" (change)="assignJobType($event)">
@@ -14,13 +14,18 @@
           <label>Start Date
             <input type="date" class="form-control" formControlName="startDate">
           </label>
+
+          <div *ngIf="addNewJobForm.controls['startDate'].errors && !addNewJobForm.controls['startDate'].pristine"
+            class="error-msg">
+            <div [hidden]="!addNewJobForm.controls['startDate'].errors.required">Start Date is required.</div>
+          </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-sm-6 form-group">
           <label>
-            <input type="checkbox" formControlName="hotJob" width="0px">
+            <input type="checkbox" formControlName="hotJob" style="width: 20px">
             Hot Job?
           </label>
         </div>

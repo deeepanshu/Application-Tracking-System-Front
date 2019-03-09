@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700');
+
 body{
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 15px;
@@ -63,9 +64,7 @@ th{
   text-align: center;
   font-size: 16px;
 }
-.navbar{
-  margin-top: 5px;
-}
+/*
 .navbar-default{
   background-color: #790e8b;
 }
@@ -73,6 +72,9 @@ th{
   color: #f2f2f2;
 }
 .navbar-default .navbar-brand:hover{
+  color: #f2f2f2;
+}
+.navbar-default .navbar-brand:focus{
   color: #f2f2f2;
 }
 .navbar-default .navbar-nav>li>a{
@@ -91,7 +93,7 @@ th{
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
   color: #f2f2f2;
   background-color: #9C27B0;
-}
+} */
 .card{
   background-color: #FFFDE7;
   box-shadow: 1px 1px rgba(0,0,0,0.4);
@@ -102,4 +104,44 @@ th{
 }
 .profileButton{
   cursor: pointer;
+}
+
+.error {
+  color: red;
+}
+.error-msg {
+  display: block;
+  position: absolute;
+  font-size: 100%;
+  color: red;
+}
+
+#toast-container > div {
+  opacity:1;
+}
+
+.bg-gemini {
+  background-color: #790e8b;
+}
+
+.navbar{
+  margin-top: 5px;
+}
+
+.navbar-light .navbar-nav .active>.nav-link {
+  color: #f2f2f2;
+}
+
+
+.head {
+  font-size: 17px;
+  font-weight: 600;
+}
+.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link{
+  color: #fff;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+  color: #fff;
+  font-weight: 600;
+  background-color: #9C27B0;
 }
